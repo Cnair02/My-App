@@ -1,5 +1,5 @@
 # app.py
-# Streamlit portfolio app with improved tabs, light-red background, and widget-based project gallery
+# Streamlit portfolio app with red theme and widget-based project gallery
 # Run with: streamlit run app.py
 
 import streamlit as st
@@ -23,18 +23,18 @@ body {
     background-color: #fef2f2;
 }
 
-/* Main content container: more top padding so tabs are fully visible */
+/* Main content container: top padding so tabs are fully visible */
 .block-container {
-    padding-top: 2.5rem;
+    padding-top: 3.0rem;
     padding-bottom: 1.5rem;
 }
 
-/* Make Streamlit main area use a soft panel color */
+/* Main content gradient */
 .main {
     background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 45%, #ffffff 100%);
 }
 
-/* Tabs: spacing + visibility */
+/* Tabs styling */
 .stTabs {
     margin-top: 0.75rem;
 }
@@ -52,9 +52,9 @@ body {
     border: 1px solid transparent;
 }
 .stTabs [aria-selected="true"] {
-    background-color: #dc2626 !important;
+    background-color: #f97373 !important; /* softer red */
     color: #fef2f2 !important;
-    border-color: #b91c1c !important;
+    border-color: #fb7185 !important;
 }
 
 /* Headings */
@@ -64,7 +64,7 @@ h1, h2, h3, h4 {
 
 /* Body text */
 p {
-    color: #4b5563;
+    color: #374151;
 }
 
 /* Project card styling */
@@ -112,8 +112,18 @@ img {
     border-radius: 0.6rem;
 }
 
-/* Make selectbox/radio labels more visible */
-.stSelectbox label, .stRadio label {
+/* Selectbox (project gallery) styled in red theme */
+.stSelectbox > div > div {
+    border-radius: 999px !important;
+    border: 1px solid #fecaca !important;
+    background-color: #fee2e2 !important;
+}
+.stSelectbox > div > div > div {
+    color: #7f1d1d !important;
+}
+
+/* Radio label color */
+.stRadio label {
     color: #7f1d1d;
 }
 </style>
@@ -121,7 +131,7 @@ img {
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # -----------------------
-# Project data
+# Project data (5 projects including IMDB data processing)
 # -----------------------
 PROJECTS = [
     {
@@ -132,7 +142,7 @@ PROJECTS = [
         "tags": ["Marketing Analytics", "E-commerce", "BI Dashboard"],
         "snapshot": "30K+ rows • 5 channels • 4 countries • +34% ROAS",
         "screenshots": {
-            # TODO: replace with real image paths or leave empty
+            # TODO: replace with real image path or leave empty string
             "Dashboard": "images/marketing_dashboard.png",
         },
         "context_objective": """
@@ -146,19 +156,19 @@ Python (Pandas, Matplotlib, Seaborn) for EDA and Tableau to build interactive RO
 GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         """.strip(),
         "analysis_steps": [
-            "Cleaned and transformed raw channel-level data, standardizing spend and revenue and engineering ROAS, CPC, CTR, and CVR metrics by channel and country.",
-            "Performed EDA in Python to benchmark channel efficiency, identify underperforming platforms, and detect saturation points.",
+            "Standardized spend and revenue fields and engineered ROAS, CPC, CTR, and CVR metrics by channel and country.",
+            "Benchmarked channel efficiency in Python to identify underperforming platforms and saturation points.",
             "Segmented performance by holiday vs non-holiday periods to quantify seasonal uplift.",
-            "Built Tableau dashboards with filters for channel, country, and time period to let stakeholders explore ROAS, CTR, and CPC interactively.",
+            "Built Tableau dashboards with filters for channel, country, and time period so stakeholders could explore ROAS and CPC interactively.",
         ],
         "results_impact": [
-            "Identified a 6× CPC inefficiency in LinkedIn (3.73) versus Meta (0.59), supporting a recommendation to reduce LinkedIn spend and reinvest in higher-ROI platforms.",
-            "Improved overall campaign ROAS by 34% (0.89 → 1.19) on reduced total spend by shifting budget toward the most efficient channels and geographies.",
+            "Identified a 6× CPC inefficiency in LinkedIn (3.73) versus Meta (0.59), supporting budget cuts to low-ROI channels.",
+            "Improved overall campaign ROAS by 34% (0.89 → 1.19) on reduced total spend via budget reallocation.",
             "Showed that holiday campaigns delivered roughly 2× higher ROAS, supporting a more seasonal, peak-focused investment strategy.",
         ],
         "how_i_work": [
             "I connect performance metrics directly to budget decisions instead of stopping at descriptive reporting.",
-            "I combine Python-based EDA with stakeholder-friendly dashboards so non-technical partners can self-serve answers and drill into the data.",
+            "I combine Python-based EDA with stakeholder-friendly dashboards so non-technical partners can self-serve answers.",
         ],
         "links": {
             "GitHub": "https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis",
@@ -186,12 +196,12 @@ Python (Pandas) for data preparation and analysis, and Tableau for interactive s
 GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         """.strip(),
         "analysis_steps": [
-            "Cleaned and aggregated transaction-level data by category, sub-category, region, and segment, computing discount rates, margins, and profit ratios.",
+            "Aggregated transaction-level data by category, sub-category, region, and segment, computing discount rates, margins, and profit ratios.",
             "Compared revenue vs profit at multiple aggregation levels to identify categories where discounting or cost structure destroyed margins.",
             "Built Tableau dashboards with dual-axis views and filters to visualize sales, profit, and discount patterns side by side.",
         ],
         "results_impact": [
-            "Uncovered a $17.7K net loss in the Tables sub-category driven by an average 26.13% discount rate across 1,241 units—an issue invisible in top-line reporting.",
+            "Uncovered a $17.7K net loss in the Tables sub-category driven by an average 26.13% discount rate across 1,241 units.",
             "Flagged Copiers as a high-margin opportunity (~$55.6K profit on relatively low volume) compared with Phones (~$44.5K profit on higher volume).",
         ],
         "how_i_work": [
@@ -211,7 +221,7 @@ GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         "tags": ["Streamlit", "LLM/Agents", "Tooling"],
         "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
         "screenshots": {
-            "App UI": "images/ai_eda_app.png",
+            "Dashboard": "images/ai_eda_app.png",
         },
         "context_objective": """
 Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch.
@@ -268,7 +278,7 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
             "Used the AI assistant to suggest hypotheses, review code for edge cases, and co-draft documentation while keeping final judgment human-owned.",
         ],
         "results_impact": [
-            "Surfaced a sharp divergence in credit-bureau performance: Equifax’s relief rate collapsed from 54% to 8.5% while Experian’s rose from 32% to 48%.",
+            "Surfaced a sharp divergence in credit-bureau performance: Equifax’s relief rate collapsed while Experian’s rose, creating a large gap by 2015.",
             "Identified a near system-wide deterioration in mortgage-servicer outcomes by 2015, highlighting a potential area for regulatory or operational intervention.",
         ],
         "how_i_work": [
@@ -277,6 +287,43 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
         ],
         "links": {
             "GitHub": "https://github.com/Cnair02/CFPB-Complaint-Analysis",
+            "Dashboard": "",
+        },
+    },
+    {
+        "id": "imdb_cleaning",
+        "title": "IMDB Data Processing & Cleaning",
+        "tagline": "Standardized a messy IMDB movies dataset into an analysis-ready table using Python and PySpark.",
+        "tools": ["Python", "PySpark", "Pandas"],
+        "tags": ["Data Cleaning", "ETL", "IMDB"],
+        "snapshot": "Multiple raw CSVs • Schema fixes • Clean, typed dataset",
+        "screenshots": {
+            "Dashboard": "images/imdb_cleaning.png",  # TODO: replace or leave blank
+        },
+        "context_objective": """
+This project focuses on data cleaning and preprocessing for IMDB-like movie data, turning inconsistent raw files into a single, reliable dataset.
+The objective was to demonstrate practical data engineering and cleaning skills: handling missing values, inconsistent types, and messy categorical fields so that downstream analysis becomes straightforward.
+        """.strip(),
+        "data_tools": """
+Raw IMDB-style movie data across multiple CSVs with inconsistent types, missing values, and noisy fields.
+Python, Pandas, and PySpark DataFrames used to profile, clean, and standardize the dataset.
+GitHub repo: https://github.com/Cnair02/IMDB-DataProcessing
+        """.strip(),
+        "analysis_steps": [
+            "Loaded multiple raw IMDB datasets into PySpark DataFrames and inspected schema, null patterns, and basic distributions.",
+            "Standardized column types (e.g., dates, numeric fields), handled missing and invalid values, and normalized categorical fields like genres.",
+            "Removed duplicates and reconciled inconsistent IDs to produce a single, coherent movie table suitable for analysis and modeling.",
+        ],
+        "results_impact": [
+            "Produced an analysis-ready IMDB dataset with consistent schema and types, significantly reducing friction for downstream EDA and modeling.",
+            "Demonstrated practical data-cleaning workflows that mirror real-world ingestion and preprocessing tasks.",
+        ],
+        "how_i_work": [
+            "I treat data cleaning and preprocessing as first-class work, not an afterthought.",
+            "I’m comfortable using both Pandas and PySpark to clean and standardize messy real-world datasets.",
+        ],
+        "links": {
+            "GitHub": "https://github.com/Cnair02/IMDB-DataProcessing",
             "Dashboard": "",
         },
     },
@@ -348,11 +395,12 @@ I enjoy taking ambiguous questions like “Which campaigns should we cut?” or 
     )
     st.markdown(
         """
-This portfolio focuses on a few projects that represent how I work day to day:  
+This portfolio focuses on a handful of projects that represent how I work day to day:  
 - Optimizing multi-channel marketing budgets and improving ROAS.  
 - Finding hidden margin issues in retail sales data.  
 - Building reusable EDA tools with LLMs and Streamlit.  
-- Investigating large regulatory datasets and turning them into clear, executive-ready insights.
+- Cleaning messy IMDB-style movie data into a reliable asset.  
+- Investigating large regulatory datasets and turning them into clear, executive-ready narratives.
         """.strip()
     )
     project_snapshot_row()
@@ -361,12 +409,12 @@ This portfolio focuses on a few projects that represent how I work day to day:
 def render_projects():
     page_header(
         "Projects",
-        "Selected work in marketing analytics, BI, and AI-assisted EDA.",
+        "Selected work in marketing analytics, BI, data cleaning, and AI-assisted EDA.",
     )
     st.markdown(
         """
 Use the selector below to explore individual projects.  
-For each one, I highlight the context, data, methods, and most importantly the business impact.
+For each one, I highlight the context, data, methods, and most importantly the business impact (or, for IMDB, the data-cleaning value).
         """.strip()
     )
 
@@ -377,25 +425,12 @@ For each one, I highlight the context, data, methods, and most importantly the b
 
     st.markdown("### Project details")
 
-    # Screenshots widget (no 'Code' options anymore)
+    # Screenshots: assume a single dashboard image per project (no 'View' toggle)
     screenshots = selected_project.get("screenshots", {})
-    if screenshots:
-        st.markdown("#### Screenshots")
-        col_img, col_info = st.columns([2, 1])
-        with col_img:
-            choice = st.radio(
-                "View:",
-                options=list(screenshots.keys()),
-                horizontal=True,
-                key=f"radio_{selected_project['id']}",
-            )
-            img_path = screenshots.get(choice)
-            if img_path:
-                st.image(img_path, use_column_width=True, caption=choice)
-        with col_info:
-            st.caption(
-                "Each screenshot gives a quick sense of the dashboard or app UI behind the analysis."
-            )
+    img_path = screenshots.get("Dashboard")
+    if img_path:
+        st.markdown("#### Screenshot")
+        st.image(img_path, use_column_width=True, caption="Dashboard")
 
     st.markdown("#### Context & objective")
     st.markdown(selected_project["context_objective"])
@@ -418,13 +453,10 @@ For each one, I highlight the context, data, methods, and most importantly the b
     if selected_project.get("links"):
         any_link = any(selected_project["links"].values())
         if any_link:
-            st.markdown("#### Links & artifacts")  # <- fixed here
+            st.markdown("#### Links & artifacts")
             for label, url in selected_project["links"].items():
                 if url:
                     st.markdown(f"- [{label}]({url})")
-
-
-
 
 
 def render_about():
@@ -439,9 +471,9 @@ That experience taught me how fragile data can be and why trustworthy pipelines 
 
     st.markdown(
         """
-Today I apply that foundation to analytics work: marketing ROI, product and customer behavior, and BI reporting.  
+Today I apply that foundation to analytics work: marketing ROI, product and customer behavior, BI reporting, and data quality.  
 I like being close to the decision—partnering with marketers, product managers, and operations leaders to understand their goals, translate them into metrics, and then build analyses and dashboards that move the needle.  
-I’m comfortable going from ad-hoc deep dives in Python to polished Tableau or Power BI views that non-technical stakeholders can own.
+I’m comfortable going from ad-hoc deep dives in Python to polished Tableau or Power BI views that non-technical stakeholders can own and update.
         """.strip()
     )
 
@@ -461,6 +493,7 @@ I’m deliberate about avoiding common analytical traps (confounding, reverse ca
 - Tableau, Power BI, Streamlit  
 - Data modeling, ETL, cloud data platforms  
 - Marketing analytics (ROAS, CAC, funnels, seasonality)  
+- Data cleaning and preprocessing (IMDB-style datasets)  
 - AI/LLM tooling and agent-based analytics workflows
         """.strip()
     )
@@ -470,7 +503,7 @@ def render_contact():
     page_header("Contact & Links", "How to reach me and explore more work.")
     st.markdown(
         """
-If you’d like to talk about data/marketing analytics, BI, or analytics engineering roles, I’d be happy to connect.  
+If you’d like to talk about data/marketing analytics, BI, data engineering, or analytics engineering roles, I’d be happy to connect.  
 I’m especially interested in roles where I can combine hands-on analysis with close collaboration with marketing or product teams, and keep learning from real-world experiments.  
 I’m open to roles in Canada and remote opportunities.
         """.strip()
