@@ -1,5 +1,5 @@
 # app.py
-# Streamlit portfolio app with tabs, subtle background color, and project snapshots
+# Streamlit portfolio app with enhanced tabs, styling, and screenshot slots
 # Run with: streamlit run app.py
 
 import math
@@ -15,36 +15,67 @@ st.set_page_config(
 )
 
 # -----------------------
-# Simple theming via CSS
+# Custom CSS for styling
 # -----------------------
-# Subtle light background for main content and slightly styled project cards
 CUSTOM_CSS = """
 <style>
-/* Overall app background */
+/* Background for main content */
 .main {
-    background-color: #f7f9fb;
+    background: linear-gradient(135deg, #f6f8fc 0%, #ffffff 60%);
+}
+
+/* Tabs styling (make them stand out more) */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0.5rem;
+}
+.stTabs [data-baseweb="tab"] {
+    background-color: #e6ecf5;
+    border-radius: 999px;
+    padding: 0.25rem 1rem;
+    color: #1f2933;
+}
+.stTabs [aria-selected="true"] {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
 }
 
 /* Card-like containers */
 .project-card {
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.75rem;
-    border-radius: 0.5rem;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.9rem;
+    border-radius: 0.75rem;
     background-color: #ffffff;
-    border: 1px solid #e3e7ee;
+    border: 1px solid #dde3f0;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 /* Slight hover effect for cards (desktop) */
 @media (hover: hover) {
   .project-card:hover {
-      border-color: #c2c9d6;
-      box-shadow: 0 0 8px rgba(15, 23, 42, 0.06);
+      border-color: #b8c2d8;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   }
 }
 
-/* Page title spacing */
+/* Snapshot pill styling */
+.snapshot-pill {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background-color: #e0ebff;
+    color: #1e3a8a;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* Make images slightly rounded */
+img {
+    border-radius: 0.5rem;
+}
+
+/* Reduce top padding a bit */
 .block-container {
-    padding-top: 1.5rem;
+    padding-top: 1.0rem;
 }
 </style>
 """
@@ -61,6 +92,11 @@ PROJECTS = [
         "tools": ["Python", "Pandas", "Matplotlib", "Seaborn", "Tableau"],
         "tags": ["Marketing Analytics", "E-commerce", "BI Dashboard"],
         "snapshot": "30K+ rows • 5 channels • 4 countries • +34% ROAS",
+        # TODO: replace with your actual screenshot file paths
+        "screenshots": {
+            "Dashboard": "images/marketing_dashboard.png",
+            "Code": "images/marketing_code.png",
+        },
         "context_objective": """
 A 3-year, 30K-row e-commerce marketing dataset was underperforming on overall ROAS, and the team needed to understand where ad dollars were being wasted.
 The objective was to compare performance across Google Search, Meta, LinkedIn, and other channels, quantify cost inefficiencies, and recommend a data-driven budget reallocation strategy.
@@ -100,6 +136,10 @@ GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         "tools": ["Python", "Pandas", "Tableau"],
         "tags": ["BI Dashboard", "Retail Analytics", "Profitability"],
         "snapshot": "$2.2M revenue • $286K profit • 17.7K loss in Tables",
+        "screenshots": {
+            "Dashboard": "images/retail_dashboard.png",
+            "Code": "images/retail_code.png",
+        },
         "context_objective": """
 Standard revenue reports were hiding important profitability issues across product categories in a retail dataset.
 The objective was to move beyond “what sells” to “what actually makes money,” identifying loss-making categories and high-margin niches that deserved more attention.
@@ -138,6 +178,10 @@ GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         "tools": ["Python", "Pandas", "Streamlit", "Seaborn", "Gemini/Google ADK"],
         "tags": ["Streamlit", "LLM/Agents", "Tooling"],
         "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
+        "screenshots": {
+            "App UI": "images/ai_eda_app.png",
+            "Code": "images/ai_eda_code.png",
+        },
         "context_objective": """
 Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch.
 The objective was to build a reusable web app that automates the first 80% of EDA and adds AI-generated guidance, while keeping the process reproducible and well-guarded.
@@ -177,6 +221,10 @@ GitHub repo: https://github.com/Cnair02/EDA
         "tools": ["Python", "Tableau", "AI Coding Assistant"],
         "tags": ["Risk Analytics", "Regulatory", "AI-assisted EDA"],
         "snapshot": "165K+ records • 4 years • 10 institutions",
+        "screenshots": {
+            "Dashboard": "images/cfpb_dashboard.png",
+            "Code": "images/cfpb_code.png",
+        },
         "context_objective": """
 The CFPB Consumer Complaint Database provides a rich view into how well financial institutions resolve customer issues over time.
 The objective was to understand how outcomes evolved from 2012–2015 across products and major firms, while explicitly avoiding analytical traps like reverse causality and confounding.
@@ -222,28 +270,31 @@ def page_header(title: str, subtitle: str):
 
 
 def project_snapshot_row():
-    """Small snapshot row for Home: quick metrics for each project."""
     st.markdown("### Project snapshots")
     cols = st.columns(4)
     for idx, project in enumerate(PROJECTS[:4]):
         with cols[idx]:
             st.markdown(f"**{project['title']}**")
-            st.caption(project["snapshot"])
+            st.markdown(
+                f'<span class="snapshot-pill">{project["snapshot"]}</span>',
+                unsafe_allow_html=True,
+            )
 
 
 def render_project_card(project: dict):
-    """Single project card for the grid."""
-    with st.container():
-        st.markdown('<div class="project-card">', unsafe_allow_html=True)
-        st.markdown(f"**{project['title']}**")
-        st.markdown(project["tagline"])
-        st.caption("Tools: " + ", ".join(project["tools"]))
-        if project.get("tags"):
-            st.caption("Tags: " + ", ".join(project["tags"]))
-        # Use a small button; in tabs layout, keys must be unique
-        if st.button("View details", key=f"btn_{project['id']}"):
-            st.session_state["selected_project_id"] = project["id"]
-        st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown('<div class="project-card">', unsafe_allow_html=True)
+    st.markdown(f"**{project['title']}**")
+    st.markdown(project["tagline"])
+    st.caption("Tools: " + ", ".join(project["tools"]))
+    if project.get("tags"):
+        st.caption("Tags: " + ", ".join(project["tags"]))
+    st.markdown(
+        f'<span class="snapshot-pill">{project["snapshot"]}</span>',
+        unsafe_allow_html=True,
+    )
+    if st.button("View details", key=f"btn_{project['id']}"):
+        st.session_state["selected_project_id"] = project["id"]
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 # -----------------------
@@ -319,6 +370,27 @@ def render_project_detail(project: dict):
     st.markdown(f"## {project['title']}")
     st.markdown(f"_{project['tagline']}_")
     st.write("")
+
+    # Screenshot selector
+    screenshots = project.get("screenshots", {})
+    if screenshots:
+        st.markdown("#### Screenshots")
+        col_img, col_info = st.columns([2, 1])
+        with col_img:
+            screenshot_options = list(screenshots.keys())
+            choice = st.radio(
+                "View:",
+                options=screenshot_options,
+                horizontal=True,
+                key=f"radio_{project['id']}",
+            )
+            img_path = screenshots.get(choice)
+            if img_path:
+                st.image(img_path, use_column_width=True, caption=choice)
+        with col_info:
+            st.caption(
+                "Screenshots give a quick sense of the code, dashboard, or app UI behind the analysis."
+            )
 
     st.markdown("#### Context & objective")
     st.markdown(project["context_objective"])
@@ -405,7 +477,7 @@ The quickest way to reach me is via email or LinkedIn. I’m open to roles in Ca
 
 
 # -----------------------
-# Main app (tabs instead of sidebar)
+# Main app (tabs)
 # -----------------------
 def main():
     tabs = st.tabs(["Home", "Projects", "About", "Contact"])
