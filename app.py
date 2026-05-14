@@ -1,7 +1,8 @@
 # app.py
-# Streamlit portfolio app for a Data Analyst / Analytics Engineer (ex-Data Engineer)
+# Streamlit portfolio app with tabs, subtle background color, and project snapshots
 # Run with: streamlit run app.py
 
+import math
 import streamlit as st
 
 # -----------------------
@@ -14,13 +15,44 @@ st.set_page_config(
 )
 
 # -----------------------
+# Simple theming via CSS
+# -----------------------
+# Subtle light background for main content and slightly styled project cards
+CUSTOM_CSS = """
+<style>
+/* Overall app background */
+.main {
+    background-color: #f7f9fb;
+}
+
+/* Card-like containers */
+.project-card {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid #e3e7ee;
+}
+
+/* Slight hover effect for cards (desktop) */
+@media (hover: hover) {
+  .project-card:hover {
+      border-color: #c2c9d6;
+      box-shadow: 0 0 8px rgba(15, 23, 42, 0.06);
+  }
+}
+
+/* Page title spacing */
+.block-container {
+    padding-top: 1.5rem;
+}
+</style>
+"""
+st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+
+# -----------------------
 # Project data
 # -----------------------
-# NOTE:
-# - The structure below is wired to your real GitHub repos.
-# - Replace the TODO sections with the full case-study text we drafted earlier
-#   (Context & objective, Data & tools, Analysis steps, Results & impact, How I work).
-
 PROJECTS = [
     {
         "id": "marketing_roi",
@@ -28,14 +60,15 @@ PROJECTS = [
         "tagline": "Improved multi-channel ROAS by 34% on reduced spend by reallocating budget across platforms and markets.",
         "tools": ["Python", "Pandas", "Matplotlib", "Seaborn", "Tableau"],
         "tags": ["Marketing Analytics", "E-commerce", "BI Dashboard"],
+        "snapshot": "30K+ rows • 5 channels • 4 countries • +34% ROAS",
         "context_objective": """
-A 3-year, 30K-row e-commerce marketing dataset was underperforming on overall ROAS, and the team needed to understand where ad dollars were being wasted. 
-The objective was to compare performance across Google Search, Meta, LinkedIn, and other channels, quantify cost inefficiencies, and recommend a data-driven budget reallocation strategy. 
+A 3-year, 30K-row e-commerce marketing dataset was underperforming on overall ROAS, and the team needed to understand where ad dollars were being wasted.
+The objective was to compare performance across Google Search, Meta, LinkedIn, and other channels, quantify cost inefficiencies, and recommend a data-driven budget reallocation strategy.
 I focused on turning raw performance logs into clear guidance on which platforms, markets, and seasons deserved more or less spend.
         """.strip(),
         "data_tools": """
-30K+ rows of ad spend and performance data across 5 channels and 4 countries, including spend, impressions, clicks, conversions, and revenue. 
-Python (Pandas, Matplotlib, Seaborn) for EDA and Tableau to build interactive ROAS and KPI dashboards. 
+30K+ rows of ad spend and performance data across 5 channels and 4 countries, including spend, impressions, clicks, conversions, and revenue.
+Python (Pandas, Matplotlib, Seaborn) for EDA and Tableau to build interactive ROAS and KPI dashboards.
 GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         """.strip(),
         "analysis_steps": [
@@ -47,17 +80,16 @@ GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         "results_impact": [
             "Identified a 6× CPC inefficiency in LinkedIn (3.73) versus Meta (0.59), supporting a recommendation to reduce LinkedIn spend and reinvest in higher-ROI platforms.",
             "Improved overall campaign ROAS by 34% (0.89 → 1.19) on reduced total spend by shifting budget toward the most efficient channels and geographies.",
-            "Showed that holiday campaigns delivered roughly 2× higher ROAS than non-holiday periods, supporting a more seasonal, peak-focused investment strategy.",
-            "Delivered an executive-ready Tableau dashboard and summary that enabled ongoing monitoring and adjustment of marketing budgets.",
+            "Showed that holiday campaigns delivered roughly 2× higher ROAS, supporting a more seasonal, peak-focused investment strategy.",
+            "Delivered an executive-ready Tableau dashboard and summary that enabled ongoing monitoring and budget adjustment.",
         ],
         "how_i_work": [
             "I connect performance metrics directly to budget decisions instead of stopping at descriptive reporting.",
             "I combine Python-based EDA with stakeholder-friendly dashboards so non-technical partners can self-serve answers and drill into the data.",
-            "I’m comfortable translating complex multi-channel performance patterns into simple, prioritized recommendations under real business constraints.",
+            "I translate complex multi-channel performance patterns into simple, prioritized recommendations under real business constraints.",
         ],
         "links": {
             "GitHub": "https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis",
-            # TODO: Add Tableau Public link if/when you publish it
             "Dashboard": "",
         },
     },
@@ -67,14 +99,15 @@ GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         "tagline": "Exposed a 17.7K loss-making sub-category and high-margin opportunities in 4 years of retail data.",
         "tools": ["Python", "Pandas", "Tableau"],
         "tags": ["BI Dashboard", "Retail Analytics", "Profitability"],
+        "snapshot": "$2.2M revenue • $286K profit • 17.7K loss in Tables",
         "context_objective": """
-Standard revenue reports were hiding important profitability issues across product categories in a retail dataset. 
-The objective was to move beyond “what sells” to “what actually makes money,” identifying loss-making categories and high-margin niches that deserved more attention. 
+Standard revenue reports were hiding important profitability issues across product categories in a retail dataset.
+The objective was to move beyond “what sells” to “what actually makes money,” identifying loss-making categories and high-margin niches that deserved more attention.
 I approached this as a category management and pricing question, not just a generic EDA exercise.
         """.strip(),
         "data_tools": """
-4 years of sales, discount, and profit data across regions, segments, and product sub-categories, totaling $2.2M revenue and $286K profit. 
-Python (Pandas) for data preparation and analysis, and Tableau for interactive sales and profit dashboards. 
+4 years of sales, discount, and profit data across regions, segments, and product sub-categories, totaling $2.2M revenue and $286K profit.
+Python (Pandas) for data preparation and analysis, and Tableau for interactive sales and profit dashboards.
 GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         """.strip(),
         "analysis_steps": [
@@ -104,18 +137,19 @@ GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         "tagline": "Streamlit app that runs EDA on any CSV and uses a Gemini agent to surface structured insights.",
         "tools": ["Python", "Pandas", "Streamlit", "Seaborn", "Gemini/Google ADK"],
         "tags": ["Streamlit", "LLM/Agents", "Tooling"],
+        "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
         "context_objective": """
-Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch. 
-The objective was to build a reusable web app that automates the first 80% of EDA and adds AI-generated guidance, while keeping the process reproducible and well-guarded. 
+Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch.
+The objective was to build a reusable web app that automates the first 80% of EDA and adds AI-generated guidance, while keeping the process reproducible and well-guarded.
 I treated this as a small internal product that could speed up exploratory work across many projects.
         """.strip(),
         "data_tools": """
-Dataset-agnostic Streamlit app with a default e-commerce dataset and support for any user-uploaded CSV. 
-Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent Development Kit (ADK). 
+Dataset-agnostic Streamlit app with a default e-commerce dataset and support for any user-uploaded CSV.
+Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent Development Kit (ADK).
 GitHub repo: https://github.com/Cnair02/EDA
         """.strip(),
         "analysis_steps": [
-            "Implemented core EDA capabilities: schema and shape overview, sample preview, summary statistics, and column-level profiling (types, missingness, ranges, top categories).",
+            "Implemented core EDA capabilities: schema and shape overview, sample preview, summary statistics, and column-level profiling.",
             "Built dynamic univariate and bivariate views (histograms, boxplots, scatter plots, categorical-numeric aggregations) using Pandas, Seaborn, and Streamlit charts.",
             "Engineered a data profiling layer to parse dates, coerce numeric metrics, and enforce basic ID integrity before analysis.",
             "Integrated a Gemini-based EDA assistant via Google ADK that consumes the compact profiling summary and returns structured markdown insights.",
@@ -133,7 +167,6 @@ GitHub repo: https://github.com/Cnair02/EDA
         ],
         "links": {
             "GitHub": "https://github.com/Cnair02/EDA",
-            # TODO: Add deployed Streamlit link if you host this separately
             "Live App": "",
         },
     },
@@ -143,14 +176,15 @@ GitHub repo: https://github.com/Cnair02/EDA
         "tagline": "Analyzed 165K+ complaints to uncover deteriorating outcomes and company-level performance gaps using AI-assisted EDA.",
         "tools": ["Python", "Tableau", "AI Coding Assistant"],
         "tags": ["Risk Analytics", "Regulatory", "AI-assisted EDA"],
+        "snapshot": "165K+ records • 4 years • 10 institutions",
         "context_objective": """
-The CFPB Consumer Complaint Database provides a rich view into how well financial institutions resolve customer issues over time. 
-The objective was to understand how outcomes evolved from 2012–2015 across products and major firms, while explicitly avoiding analytical traps like reverse causality and confounding. 
+The CFPB Consumer Complaint Database provides a rich view into how well financial institutions resolve customer issues over time.
+The objective was to understand how outcomes evolved from 2012–2015 across products and major firms, while explicitly avoiding analytical traps like reverse causality and confounding.
 I treated this as both a substantive analysis and a testbed for a disciplined, AI-supported EDA process.
         """.strip(),
         "data_tools": """
-165,242 complaints and 19 fields covering product, company, geography, and resolution outcomes. 
-Python and an AI coding assistant (Claude Code) used as a pair-programmer for hypothesis generation, code review, and edge-case detection. 
+165,242 complaints and 19 fields covering product, company, geography, and resolution outcomes.
+Python and an AI coding assistant (Claude Code) used as a pair-programmer for hypothesis generation, code review, and edge-case detection.
 GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
         """.strip(),
         "analysis_steps": [
@@ -176,16 +210,50 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
     },
 ]
 
-# Helper mapping if needed later
-PROJECT_ID_TO_OBJ = {p["id"]: p for p in PROJECTS}
+
+# -----------------------
+# Layout helpers
+# -----------------------
+def page_header(title: str, subtitle: str):
+    st.title(title)
+    if subtitle:
+        st.caption(subtitle)
+    st.markdown("---")
+
+
+def project_snapshot_row():
+    """Small snapshot row for Home: quick metrics for each project."""
+    st.markdown("### Project snapshots")
+    cols = st.columns(4)
+    for idx, project in enumerate(PROJECTS[:4]):
+        with cols[idx]:
+            st.markdown(f"**{project['title']}**")
+            st.caption(project["snapshot"])
+
+
+def render_project_card(project: dict):
+    """Single project card for the grid."""
+    with st.container():
+        st.markdown('<div class="project-card">', unsafe_allow_html=True)
+        st.markdown(f"**{project['title']}**")
+        st.markdown(project["tagline"])
+        st.caption("Tools: " + ", ".join(project["tools"]))
+        if project.get("tags"):
+            st.caption("Tags: " + ", ".join(project["tags"]))
+        # Use a small button; in tabs layout, keys must be unique
+        if st.button("View details", key=f"btn_{project['id']}"):
+            st.session_state["selected_project_id"] = project["id"]
+        st.markdown("</div>", unsafe_allow_html=True)
 
 
 # -----------------------
 # Page render functions
 # -----------------------
 def render_home():
-    st.title("Data & Analytics Portfolio")
-    st.subheader("Data Analyst / Analytics Engineer (ex-Data Engineer)")
+    page_header(
+        "Data & Analytics Portfolio",
+        "Data Analyst / Analytics Engineer (ex-Data Engineer)",
+    )
 
     st.markdown(
         """
@@ -195,19 +263,15 @@ This portfolio highlights projects where I improved marketing ROI, surfaced hidd
         """.strip()
     )
 
-    st.markdown("---")
-    st.markdown("### Highlighted projects")
-
-    cols = st.columns(2)
-    for idx, project in enumerate(PROJECTS[:4]):
-        with cols[idx % 2]:
-            st.markdown(f"#### {project['title']}")
-            st.markdown(project["tagline"])
-            st.caption("Tools: " + ", ".join(project["tools"]))
+    project_snapshot_row()
 
 
 def render_projects():
-    st.title("Projects")
+    page_header(
+        "Projects",
+        "Selected work in marketing analytics, BI, and AI-assisted EDA.",
+    )
+
     st.markdown(
         """
 These projects show how I work end-to-end: from clarifying the business question and structuring the data,  
@@ -215,21 +279,20 @@ to analysis, dashboards, and recommendations across marketing analytics, BI, and
         """.strip()
     )
 
-    st.markdown("---")
-    st.markdown("### Project list")
+    st.markdown("### Project gallery")
 
-    cols = st.columns(2)
-    for idx, project in enumerate(PROJECTS):
-        with cols[idx % 2]:
-            st.markdown(f"#### {project['title']}")
-            st.markdown(project["tagline"])
-            st.caption("Tools: " + ", ".join(project["tools"]))
-            if project["tags"]:
-                st.caption("Tags: " + ", ".join(project["tags"]))
-            if st.button("View details", key=f"btn_{project['id']}"):
-                st.session_state["selected_project_id"] = project["id"]
+    num_cols = 2
+    num_rows = math.ceil(len(PROJECTS) / num_cols)
 
-    st.markdown("---")
+    for row in range(num_rows):
+        cols = st.columns(num_cols)
+        for col_idx in range(num_cols):
+            proj_idx = row * num_cols + col_idx
+            if proj_idx >= len(PROJECTS):
+                continue
+            with cols[col_idx]:
+                render_project_card(PROJECTS[proj_idx])
+
     st.markdown("### Project details")
 
     project_titles = [p["title"] for p in PROJECTS]
@@ -271,7 +334,7 @@ def render_project_detail(project: dict):
     for result in project["results_impact"]:
         st.markdown(f"- {result}")
 
-    st.markmarkdown("#### What this shows about how I work")
+    st.markdown("#### What this shows about how I work")
     for item in project["how_i_work"]:
         st.markdown(f"- {item}")
 
@@ -285,7 +348,7 @@ def render_project_detail(project: dict):
 
 
 def render_about():
-    st.title("About")
+    page_header("About", "Who I am and how I work.")
 
     st.markdown("### Who I am")
     st.markdown(
@@ -323,7 +386,7 @@ I enjoy partnering with marketing, product, and operations stakeholders and usin
 
 
 def render_contact():
-    st.title("Contact & Links")
+    page_header("Contact & Links", "How to reach me and explore more work.")
 
     st.markdown("### Let’s connect")
     st.markdown(
@@ -342,22 +405,18 @@ The quickest way to reach me is via email or LinkedIn. I’m open to roles in Ca
 
 
 # -----------------------
-# Main app
+# Main app (tabs instead of sidebar)
 # -----------------------
 def main():
-    st.sidebar.title("Navigate")
-    page = st.sidebar.radio(
-        "",
-        ("Home", "Projects", "About", "Contact"),
-    )
+    tabs = st.tabs(["Home", "Projects", "About", "Contact"])
 
-    if page == "Home":
+    with tabs[0]:
         render_home()
-    elif page == "Projects":
+    with tabs[1]:
         render_projects()
-    elif page == "About":
+    with tabs[2]:
         render_about()
-    elif page == "Contact":
+    with tabs[3]:
         render_contact()
 
 
