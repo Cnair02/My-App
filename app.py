@@ -94,7 +94,7 @@ PROJECTS = [
         "snapshot": "30K+ rows • 5 channels • 4 countries • +34% ROAS",
         # TODO: replace with your actual screenshot file paths
         "screenshots": {
-            "Dashboard": "images/marketing_dashboard.jpeg",
+            "Dashboard": "images/marketing_dashboard.png",
             # "Code": "images/marketing_code.png",
         },
         "context_objective": """
@@ -137,7 +137,7 @@ GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         "tags": ["BI Dashboard", "Retail Analytics", "Profitability"],
         "snapshot": "$2.2M revenue • $286K profit • 17.7K loss in Tables",
         "screenshots": {
-            "Dashboard": "images/retail_dashboard.jpeg",
+            "Dashboard": "images/sales_dashboard.png",
             # "Code": "images/retail_code.png",
         },
         "context_objective": """
@@ -179,7 +179,7 @@ GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         "tags": ["Streamlit", "LLM/Agents", "Tooling"],
         "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
         "screenshots": {
-            "App UI": "images/ai_eda_app.jpeg",
+            "App UI": "images/ai_eda_app.png",
             # "Code": "images/ai_eda_code.png",
         },
         "context_objective": """
@@ -222,7 +222,7 @@ GitHub repo: https://github.com/Cnair02/EDA
         "tags": ["Risk Analytics", "Regulatory", "AI-assisted EDA"],
         "snapshot": "165K+ records • 4 years • 10 institutions",
         "screenshots": {
-            "Dashboard": "images/cfpb_dashboard.jpeg",
+            "Dashboard": "images/cfpb_dashboard.png",
             # "Code": "images/cfpb_code.png",
         },
         "context_objective": """
