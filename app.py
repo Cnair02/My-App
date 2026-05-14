@@ -1,5 +1,5 @@
 # app.py
-# Streamlit portfolio app with red theme and widget-based project gallery
+# Streamlit portfolio app with red theme, IMDB project, and cover banner
 # Run with: streamlit run app.py
 
 import streamlit as st
@@ -25,13 +25,44 @@ body {
 
 /* Main content container: top padding so tabs are fully visible */
 .block-container {
-    padding-top: 3.0rem;
+    padding-top: 3.2rem;
     padding-bottom: 1.5rem;
 }
 
 /* Main content gradient */
 .main {
     background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 45%, #ffffff 100%);
+}
+
+/* Cover banner */
+.cover-banner {
+    border-radius: 1.2rem;
+    padding: 1.2rem 1.4rem;
+    background: radial-gradient(circle at top left, #fecaca 0%, #fee2e2 40%, #ffffff 100%);
+    border: 1px solid #fecaca;
+    box-shadow: 0 16px 40px rgba(248, 113, 113, 0.22);
+    margin-bottom: 1.5rem;
+}
+.cover-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #7f1d1d;
+}
+.cover-subtitle {
+    font-size: 0.95rem;
+    color: #b91c1c;
+}
+.cover-tags {
+    margin-top: 0.5rem;
+}
+.cover-tag-pill {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: #fee2e2;
+    color: #7f1d1d;
+    font-size: 0.8rem;
+    margin-right: 0.25rem;
 }
 
 /* Tabs styling */
@@ -52,7 +83,7 @@ body {
     border: 1px solid transparent;
 }
 .stTabs [aria-selected="true"] {
-    background-color: #f97373 !important; /* softer red */
+    background-color: #f97373 !important;
     color: #fef2f2 !important;
     border-color: #fb7185 !important;
 }
@@ -121,17 +152,12 @@ img {
 .stSelectbox > div > div > div {
     color: #7f1d1d !important;
 }
-
-/* Radio label color */
-.stRadio label {
-    color: #7f1d1d;
-}
 </style>
 """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # -----------------------
-# Project data (5 projects including IMDB data processing)
+# Project data (5 projects including IMDB)
 # -----------------------
 PROJECTS = [
     {
@@ -142,8 +168,7 @@ PROJECTS = [
         "tags": ["Marketing Analytics", "E-commerce", "BI Dashboard"],
         "snapshot": "30K+ rows • 5 channels • 4 countries • +34% ROAS",
         "screenshots": {
-            # TODO: replace with real image path or leave empty string
-            "Dashboard": "images/marketing_dashboard.png",
+            "Dashboard": "images/marketing_dashboard.png",  # TODO: update or leave empty
         },
         "context_objective": """
 A 3-year, 30K-row e-commerce marketing dataset was underperforming on overall ROAS, and the team needed to understand where ad dollars were being wasted.
@@ -269,7 +294,7 @@ I treated this as both a substantive analysis and a testbed for a disciplined, A
         """.strip(),
         "data_tools": """
 165,242 complaints and 19 fields covering product, company, geography, and resolution outcomes.
-Python and an AI coding assistant (Claude Code) used as a pair-programmer for hypothesis generation, code review, and edge-case detection.
+Python and an AI coding assistant used as a pair-programmer for hypothesis generation, code review, and edge-case detection.
 GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
         """.strip(),
         "analysis_steps": [
@@ -278,8 +303,8 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
             "Used the AI assistant to suggest hypotheses, review code for edge cases, and co-draft documentation while keeping final judgment human-owned.",
         ],
         "results_impact": [
-            "Surfaced a sharp divergence in credit-bureau performance: Equifax’s relief rate collapsed while Experian’s rose, creating a large gap by 2015.",
-            "Identified a near system-wide deterioration in mortgage-servicer outcomes by 2015, highlighting a potential area for regulatory or operational intervention.",
+            "Surfaced a sharp divergence in credit-bureau performance, highlighting risk signals that multi-year averages would have hidden.",
+            "Identified a near system-wide deterioration in mortgage-servicer outcomes by 2015, suggesting areas for regulatory or operational intervention.",
         ],
         "how_i_work": [
             "I design analyses with methodological discipline—predefined questions, guardrails, and explicit checks for confounders.",
@@ -298,7 +323,7 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
         "tags": ["Data Cleaning", "ETL", "IMDB"],
         "snapshot": "Multiple raw CSVs • Schema fixes • Clean, typed dataset",
         "screenshots": {
-            "Dashboard": "images/imdb_cleaning.png",  # TODO: replace or leave blank
+            "Dashboard": "images/imdb_cleaning.png",
         },
         "context_objective": """
 This project focuses on data cleaning and preprocessing for IMDB-like movie data, turning inconsistent raw files into a single, reliable dataset.
@@ -315,8 +340,8 @@ GitHub repo: https://github.com/Cnair02/IMDB-DataProcessing
             "Removed duplicates and reconciled inconsistent IDs to produce a single, coherent movie table suitable for analysis and modeling.",
         ],
         "results_impact": [
-            "Produced an analysis-ready IMDB dataset with consistent schema and types, significantly reducing friction for downstream EDA and modeling.",
-            "Demonstrated practical data-cleaning workflows that mirror real-world ingestion and preprocessing tasks.",
+            "Produced an analysis-ready IMDB dataset with a consistent schema and types, reducing friction for downstream EDA and modeling.",
+            "Demonstrated practical data-cleaning workflows similar to real-world ingestion and preprocessing tasks.",
         ],
         "how_i_work": [
             "I treat data cleaning and preprocessing as first-class work, not an afterthought.",
@@ -340,9 +365,32 @@ def page_header(title: str, subtitle: str):
     st.markdown("---")
 
 
+def render_cover_banner():
+    """LinkedIn-style cover banner on Home."""
+    st.markdown(
+        """
+        <div class="cover-banner">
+            <div class="cover-title">Data Analyst & Analytics Engineer</div>
+            <div class="cover-subtitle">
+                Turning marketing, product, and customer data into clear decisions — with solid data engineering under the hood.
+            </div>
+            <div class="cover-tags">
+                <span class="cover-tag-pill">SQL & Python</span>
+                <span class="cover-tag-pill">Marketing ROI</span>
+                <span class="cover-tag-pill">BI Dashboards</span>
+                <span class="cover-tag-pill">Data Cleaning</span>
+                <span class="cover-tag-pill">AI-assisted Analytics</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def project_snapshot_row():
     st.markdown("### Project snapshots")
     cols = st.columns(4)
+    # show the first 4 projects as snapshots (you can reorder PROJECTS to pick which)
     for idx, proj in enumerate(PROJECTS[:4]):
         with cols[idx]:
             st.markdown(
@@ -382,6 +430,7 @@ def render_project_card(project: dict):
 # Pages
 # -----------------------
 def render_home():
+    render_cover_banner()
     page_header(
         "Data & Analytics Portfolio",
         "Data Analyst / Analytics Engineer (ex-Data Engineer)",
@@ -414,7 +463,7 @@ def render_projects():
     st.markdown(
         """
 Use the selector below to explore individual projects.  
-For each one, I highlight the context, data, methods, and most importantly the business impact (or, for IMDB, the data-cleaning value).
+For each one, I highlight the context, data, methods, and the measurable impact (or, for IMDB, how the cleaned dataset enables better analysis).
         """.strip()
     )
 
@@ -425,7 +474,7 @@ For each one, I highlight the context, data, methods, and most importantly the b
 
     st.markdown("### Project details")
 
-    # Screenshots: assume a single dashboard image per project (no 'View' toggle)
+    # Single dashboard screenshot per project (no extra View widgets)
     screenshots = selected_project.get("screenshots", {})
     img_path = screenshots.get("Dashboard")
     if img_path:
