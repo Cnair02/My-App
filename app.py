@@ -323,7 +323,7 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
         "tags": ["Data Cleaning", "ETL", "IMDB"],
         "snapshot": "Multiple raw CSVs • Schema fixes • Clean, typed dataset",
         "screenshots": {
-            "Dashboard": "images/imdb_cleaning.png",
+            "Dashboard": "images/imdb_before_after.png",
         },
         "context_objective": """
 This project focuses on data cleaning and preprocessing for IMDB-like movie data, turning inconsistent raw files into a single, reliable dataset.
