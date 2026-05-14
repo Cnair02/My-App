@@ -1,5 +1,5 @@
 # app.py
-# Streamlit portfolio app with improved tabs, subtle background, and widget-based project gallery
+# Streamlit portfolio app with improved tabs, light-red background, and widget-based project gallery
 # Run with: streamlit run app.py
 
 import streamlit as st
@@ -18,72 +18,81 @@ st.set_page_config(
 # -----------------------
 CUSTOM_CSS = """
 <style>
-/* Overall page background (subtle dark slate) */
+/* Overall page background */
 body {
-    background-color: #020617;
+    background-color: #fef2f2;
 }
 
-/* Main content container */
+/* Main content container: more top padding so tabs are fully visible */
 .block-container {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
     padding-bottom: 1.5rem;
 }
 
-/* Make Streamlit main area use a softer panel color */
+/* Make Streamlit main area use a soft panel color */
 .main {
-    background: linear-gradient(135deg, #020617 0%, #020617 20%, #020617 100%);
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 45%, #ffffff 100%);
 }
 
-/* Tabs: pull them down a bit and make them readable */
+/* Tabs: spacing + visibility */
 .stTabs {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 }
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0.5rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid #1f2937;
+    gap: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #fecaca;
 }
 .stTabs [data-baseweb="tab"] {
-    background-color: #111827;
+    background-color: #fee2e2;
     border-radius: 999px;
-    padding: 0.2rem 1.0rem;
-    color: #e5e7eb;
+    padding: 0.25rem 1.1rem;
+    color: #7f1d1d;
     font-weight: 500;
     border: 1px solid transparent;
 }
 .stTabs [aria-selected="true"] {
-    background-color: #2563eb !important;
-    color: #f9fafb !important;
-    border-color: #2563eb !important;
+    background-color: #dc2626 !important;
+    color: #fef2f2 !important;
+    border-color: #b91c1c !important;
 }
 
 /* Headings */
 h1, h2, h3, h4 {
-    color: #e5e7eb;
+    color: #7f1d1d;
 }
 
-/* Paragraph text */
+/* Body text */
 p {
-    color: #d1d5db;
+    color: #4b5563;
 }
 
 /* Project card styling */
 .project-card {
     padding: 1.0rem 1.2rem;
     border-radius: 0.9rem;
-    background: radial-gradient(circle at top left, #111827 0%, #020617 60%);
-    border: 1px solid #1f2937;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.6);
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    box-shadow: 0 10px 25px rgba(248, 113, 113, 0.25);
 }
 
-/* Snapshot pill */
-.snapshot-pill {
-    display: inline-block;
-    padding: 0.18rem 0.6rem;
-    border-radius: 999px;
-    background-color: #1d4ed8;
-    color: #e5e7eb;
-    font-size: 0.8rem;
+/* Snapshot widgets: rectangular pop-out */
+.snapshot-widget {
+    padding: 0.8rem 0.9rem;
+    border-radius: 0.75rem;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.25);
+    height: 100%;
+}
+.snapshot-title {
+    font-weight: 600;
+    color: #7f1d1d;
+    margin-bottom: 0.2rem;
+}
+.snapshot-metric {
+    font-size: 0.9rem;
+    color: #b91c1c;
 }
 
 /* Tags pill */
@@ -91,9 +100,9 @@ p {
     display: inline-block;
     padding: 0.12rem 0.5rem;
     border-radius: 999px;
-    background-color: #0f172a;
-    color: #9ca3af;
-    font-size: 0.75rem;
+    background-color: #fee2e2;
+    color: #7f1d1d;
+    font-size: 0.8rem;
     margin-right: 0.25rem;
     margin-bottom: 0.15rem;
 }
@@ -103,9 +112,9 @@ img {
     border-radius: 0.6rem;
 }
 
-/* Make selectbox/radio labels a bit brighter */
+/* Make selectbox/radio labels more visible */
 .stSelectbox label, .stRadio label {
-    color: #e5e7eb;
+    color: #7f1d1d;
 }
 </style>
 """
@@ -125,7 +134,6 @@ PROJECTS = [
         "screenshots": {
             # TODO: replace with real image paths or leave empty
             "Dashboard": "images/marketing_dashboard.png",
-            "Code": "images/marketing_code.png",
         },
         "context_objective": """
 A 3-year, 30K-row e-commerce marketing dataset was underperforming on overall ROAS, and the team needed to understand where ad dollars were being wasted.
@@ -166,7 +174,6 @@ GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         "snapshot": "$2.2M revenue • $286K profit • 17.7K loss in Tables",
         "screenshots": {
             "Dashboard": "images/retail_dashboard.png",
-            "Code": "images/retail_code.png",
         },
         "context_objective": """
 Standard revenue reports were hiding important profitability issues across product categories in a retail dataset.
@@ -205,7 +212,6 @@ GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
         "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
         "screenshots": {
             "App UI": "images/ai_eda_app.png",
-            "Code": "images/ai_eda_code.png",
         },
         "context_objective": """
 Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch.
@@ -245,7 +251,6 @@ GitHub repo: https://github.com/Cnair02/EDA
         "snapshot": "165K+ records • 4 years • 10 institutions",
         "screenshots": {
             "Dashboard": "images/cfpb_dashboard.png",
-            "Code": "images/cfpb_code.png",
         },
         "context_objective": """
 The CFPB Consumer Complaint Database provides a rich view into how well financial institutions resolve customer issues over time.
@@ -263,7 +268,7 @@ GitHub repo: https://github.com/Cnair02/CFPB-Complaint-Analysis
             "Used the AI assistant to suggest hypotheses, review code for edge cases, and co-draft documentation while keeping final judgment human-owned.",
         ],
         "results_impact": [
-            "Surfaced a sharp divergence in credit-bureau performance: Equifax’s relief rate collapsed from 54% to 8.5% while Experian’s rose from 32% to 48%, creating a ~45-pp gap by 2015.",
+            "Surfaced a sharp divergence in credit-bureau performance: Equifax’s relief rate collapsed from 54% to 8.5% while Experian’s rose from 32% to 48%.",
             "Identified a near system-wide deterioration in mortgage-servicer outcomes by 2015, highlighting a potential area for regulatory or operational intervention.",
         ],
         "how_i_work": [
@@ -293,9 +298,11 @@ def project_snapshot_row():
     cols = st.columns(4)
     for idx, proj in enumerate(PROJECTS[:4]):
         with cols[idx]:
-            st.markdown(f"**{proj['title']}**")
             st.markdown(
-                f'<span class="snapshot-pill">{proj["snapshot"]}</span>',
+                f'<div class="snapshot-widget">'
+                f'<div class="snapshot-title">{proj["title"]}</div>'
+                f'<div class="snapshot-metric">{proj["snapshot"]}</div>'
+                f"</div>",
                 unsafe_allow_html=True,
             )
 
@@ -313,10 +320,7 @@ def render_project_card(project: dict):
     st.markdown('<div class="project-card">', unsafe_allow_html=True)
     st.markdown(f"### {project['title']}")
     st.markdown(project["tagline"])
-    st.markdown(
-        f'<span class="snapshot-pill">{project["snapshot"]}</span>',
-        unsafe_allow_html=True,
-    )
+    st.markdown(f"**Snapshot:** {project['snapshot']}")
     st.write("")
     st.caption("Tools: " + ", ".join(project["tools"]))
     if project.get("tags"):
@@ -338,8 +342,17 @@ def render_home():
     st.markdown(
         """
 I help teams turn messy data into clear, business-ready insights using SQL, Python, and modern BI tools.  
-I started my career in data engineering, building pipelines and data products in banking and tech, and now focus on analytics for marketing, product, and operations.  
-This portfolio highlights projects where I improved marketing ROI, surfaced hidden margin issues, and built AI-assisted analytics tools.
+Over the last few years I’ve moved from building production data pipelines in banking to using that foundation to answer business questions for marketing, product, and operations teams.  
+I enjoy taking ambiguous questions like “Which campaigns should we cut?” or “Which customers are at risk?” and turning them into structured analysis, dashboards, and concrete recommendations.
+        """.strip()
+    )
+    st.markdown(
+        """
+This portfolio focuses on a few projects that represent how I work day to day:  
+- Optimizing multi-channel marketing budgets and improving ROAS.  
+- Finding hidden margin issues in retail sales data.  
+- Building reusable EDA tools with LLMs and Streamlit.  
+- Investigating large regulatory datasets and turning them into clear, executive-ready insights.
         """.strip()
     )
     project_snapshot_row()
@@ -353,7 +366,7 @@ def render_projects():
     st.markdown(
         """
 Use the selector below to explore individual projects.  
-Each project card is followed by detailed context, methods, and impact.
+For each one, I highlight the context, data, methods, and most importantly the business impact.
         """.strip()
     )
 
@@ -364,7 +377,7 @@ Each project card is followed by detailed context, methods, and impact.
 
     st.markdown("### Project details")
 
-    # Screenshots widget
+    # Screenshots widget (no 'Code' options anymore)
     screenshots = selected_project.get("screenshots", {})
     if screenshots:
         st.markdown("#### Screenshots")
@@ -381,7 +394,7 @@ Each project card is followed by detailed context, methods, and impact.
                 st.image(img_path, use_column_width=True, caption=choice)
         with col_info:
             st.caption(
-                "Screenshots give a quick sense of the code, dashboard, or app UI behind the analysis."
+                "Each screenshot gives a quick sense of the dashboard or app UI behind the analysis."
             )
 
     st.markdown("#### Context & objective")
@@ -405,7 +418,7 @@ Each project card is followed by detailed context, methods, and impact.
     if selected_project.get("links"):
         any_link = any(selected_project["links"].values())
         if any_link:
-            st.markdown("#### Links & artifacts")
+            st.markmarkdown("#### Links & artifacts")
             for label, url in selected_project["links"].items():
                 if url:
                     st.markdown(f"- [{label}]({url})")
@@ -416,15 +429,25 @@ def render_about():
     st.markdown(
         """
 I’m a data analyst and analytics engineer with a background in data engineering across financial services and technology.  
-I’ve built ETL pipelines and data products in production banking environments, and now focus on analytics work that improves marketing ROI, profitability, and customer outcomes.
+Early in my career I focused on keeping data flowing reliably: building ETL pipelines, migrating workloads to the cloud, and maintaining thousands of feeds in a production banking environment.  
+That experience taught me how fragile data can be and why trustworthy pipelines matter for every analysis.
+        """.strip()
+    )
+
+    st.markdown(
+        """
+Today I apply that foundation to analytics work: marketing ROI, product and customer behavior, and BI reporting.  
+I like being close to the decision—partnering with marketers, product managers, and operations leaders to understand their goals, translate them into metrics, and then build analyses and dashboards that move the needle.  
+I’m comfortable going from ad-hoc deep dives in Python to polished Tableau or Power BI views that non-technical stakeholders can own.
         """.strip()
     )
 
     st.markdown("### How I work")
     st.markdown(
         """
-I’m comfortable moving from raw data (APIs, CSVs, warehouses) to cleaned models, exploratory analysis, and dashboards in Python, SQL, Tableau, and Power BI.  
-I like to start with clear business questions, design metrics that matter (ROAS, CAC, churn, profit, relief rates), and present findings in plain language with concrete recommendations.
+When I start a project, I usually begin with a short problem framing: what decision are we trying to make, which levers can we realistically pull, and how will we know if the change worked.  
+From there I design the data model and KPIs, run exploratory analysis to find patterns and edge cases, and then iterate on visuals and recommendations with stakeholders.  
+I’m deliberate about avoiding common analytical traps (confounding, reverse causality, cherry-picking) and I document assumptions so decisions are traceable.
         """.strip()
     )
 
@@ -434,6 +457,7 @@ I like to start with clear business questions, design metrics that matter (ROAS,
 - SQL, Python (Pandas, NumPy, visualization)  
 - Tableau, Power BI, Streamlit  
 - Data modeling, ETL, cloud data platforms  
+- Marketing analytics (ROAS, CAC, funnels, seasonality)  
 - AI/LLM tooling and agent-based analytics workflows
         """.strip()
     )
@@ -444,6 +468,7 @@ def render_contact():
     st.markdown(
         """
 If you’d like to talk about data/marketing analytics, BI, or analytics engineering roles, I’d be happy to connect.  
+I’m especially interested in roles where I can combine hands-on analysis with close collaboration with marketing or product teams, and keep learning from real-world experiments.  
 I’m open to roles in Canada and remote opportunities.
         """.strip()
     )
