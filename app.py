@@ -415,7 +415,7 @@ def project_select_widget():
 
 def render_project_card(project: dict):
     # Open the card div once
-    st.markdown('<div class="project-card">', unsafe_allow_html=True)
+    # st.markdown('<div class="project-card">', unsafe_allow_html=True)
 
     # All content stays INSIDE the card
     st.markdown(f"### {project['title']}")
@@ -478,12 +478,43 @@ For each one, I highlight the context, data, methods, and the measurable impact.
     st.markdown("### Project gallery")
     selected_project = project_select_widget()
 
-    st.write("")
-    # This call will now render a correctly sized card with content inside
-    render_project_card(selected_project)
+    st.write("")  # spacing
+    render_project_card(selected_project)  # should now show title, tagline, etc.
 
     st.markdown("### Project details")
-    # ... rest of your details section ...
+
+    # Single screenshot per project
+    screenshots = selected_project.get("screenshots", {})
+    img_path = screenshots.get("Dashboard")
+    if img_path:
+        st.markdown("#### Screenshot")
+        st.image(img_path, use_column_width=True, caption="Dashboard")
+
+    st.markdown("#### Context & objective")
+    st.markdown(selected_project["context_objective"])
+
+    st.markdown("#### Data & tools")
+    st.markdown(selected_project["data_tools"])
+
+    st.markdown("#### Analysis steps")
+    for step in selected_project["analysis_steps"]:
+        st.markdown(f"- {step}")
+
+    st.markdown("#### Results & business impact")
+    for result in selected_project["results_impact"]:
+        st.markdown(f"- {result}")
+
+    st.markdown("#### What this shows about how I work")
+    for item in selected_project["how_i_work"]:
+        st.markdown(f"- {item}")
+
+    if selected_project.get("links"):
+        any_link = any(selected_project["links"].values())
+        if any_link:
+            st.markdown("#### Links & artifacts")
+            for label, url in selected_project["links"].items():
+                if url:
+                    st.markdown(f"- [{label}]({url})")
 
 
 def render_about():
