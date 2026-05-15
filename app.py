@@ -12,17 +12,18 @@ st.markdown(
     """
     <style>
     .name-title {
-        font-size: 108px;!important;
-        font-weight: 1000;!important;
-        margin-bottom: 0.5rem;!important;
+        font-size: 60px !important;
+        font-weight: 900 !important;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        display: block;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.markdown('<p class="name-title">CHITRA MURALI NAIR</p>', unsafe_allow_html=True)
-
+st.markdown('<span class="name-title">Chaitanya Nair</span>', unsafe_allow_html=True)
 st.set_page_config(
     page_title="Data & Analytics Portfolio",
     page_icon="📊",
