@@ -160,6 +160,45 @@ section[data-testid="stVerticalBlock"] h3 {
 # -----------------------
 PROJECTS = [
     {
+        "id": "ai_eda_dashboard",
+        "title": "AI-Augmented EDA Dashboard",
+        "tagline": "Streamlit app that runs EDA on any CSV and uses a Gemini agent to surface structured insights.",
+        "tools": ["Python", "Pandas", "Streamlit", "Seaborn", "Gemini/Google ADK"],
+        "tags": ["Streamlit", "LLM/Agents", "Tooling"],
+        "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
+        "screenshots": {
+            "Dashboard": "images/ai_eda_app.png",
+        },
+        "context_objective": """
+Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch.
+The objective was to build a reusable web app that automates the first 80% of EDA and adds AI-generated guidance, while keeping the process reproducible and well-guarded.
+I treated this as a small internal product that could speed up exploratory work across many projects.
+        """.strip(),
+        "data_tools": """
+Dataset-agnostic Streamlit app with a default e-commerce dataset and support for any user-uploaded CSV.
+Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent Development Kit (ADK).
+GitHub repo: https://github.com/Cnair02/EDA
+        """.strip(),
+        "analysis_steps": [
+            "Implemented core EDA capabilities: schema and shape overview, sample preview, summary statistics, and column-level profiling.",
+            "Built dynamic univariate and bivariate views using Pandas, Seaborn, and Streamlit charts.",
+            "Engineered a data profiling layer to parse dates, coerce numeric metrics, and enforce basic ID integrity before analysis.",
+            "Integrated a Gemini-based EDA assistant via Google ADK that consumes the compact profiling summary and returns structured markdown insights.",
+        ],
+        "results_impact": [
+            "Delivered a plug-and-play EDA tool that lets analysts and PMs upload a dataset and get initial visualizations and AI-generated insights without writing code.",
+            "Demonstrated safe, repeatable AI integration by separating core EDA logic from AI calls and enforcing a consistent prompt template.",
+        ],
+        "how_i_work": [
+            "I build tools that scale my own analysis workflow and make EDA accessible to non-technical collaborators.",
+            "I think in terms of products (UX, error handling, documentation, deployment), not just one-off notebooks.",
+        ],
+        "links": {
+            "GitHub": "https://github.com/Cnair02/EDA",
+            "Live App": "",
+        },
+    },
+    {
         "id": "marketing_roi",
         "title": "Marketing ROI & Budget Optimization",
         "tagline": "Improved multi-channel ROAS by 34% on reduced spend by reallocating budget across platforms and markets.",
@@ -237,45 +276,7 @@ GitHub repo: https://github.com/Cnair02/Sales-vs-Profit-Analysis
             "Dashboard": "",
         },
     },
-    {
-        "id": "ai_eda_dashboard",
-        "title": "AI-Augmented EDA Dashboard",
-        "tagline": "Streamlit app that runs EDA on any CSV and uses a Gemini agent to surface structured insights.",
-        "tools": ["Python", "Pandas", "Streamlit", "Seaborn", "Gemini/Google ADK"],
-        "tags": ["Streamlit", "LLM/Agents", "Tooling"],
-        "snapshot": "Dataset-agnostic • Gemini insights • Reusable tool",
-        "screenshots": {
-            "Dashboard": "images/ai_eda_app.png",
-        },
-        "context_objective": """
-Analysts and PMs often need a quick “first pass” on a new dataset but don’t always have time or skills to write EDA code from scratch.
-The objective was to build a reusable web app that automates the first 80% of EDA and adds AI-generated guidance, while keeping the process reproducible and well-guarded.
-I treated this as a small internal product that could speed up exploratory work across many projects.
-        """.strip(),
-        "data_tools": """
-Dataset-agnostic Streamlit app with a default e-commerce dataset and support for any user-uploaded CSV.
-Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent Development Kit (ADK).
-GitHub repo: https://github.com/Cnair02/EDA
-        """.strip(),
-        "analysis_steps": [
-            "Implemented core EDA capabilities: schema and shape overview, sample preview, summary statistics, and column-level profiling.",
-            "Built dynamic univariate and bivariate views using Pandas, Seaborn, and Streamlit charts.",
-            "Engineered a data profiling layer to parse dates, coerce numeric metrics, and enforce basic ID integrity before analysis.",
-            "Integrated a Gemini-based EDA assistant via Google ADK that consumes the compact profiling summary and returns structured markdown insights.",
-        ],
-        "results_impact": [
-            "Delivered a plug-and-play EDA tool that lets analysts and PMs upload a dataset and get initial visualizations and AI-generated insights without writing code.",
-            "Demonstrated safe, repeatable AI integration by separating core EDA logic from AI calls and enforcing a consistent prompt template.",
-        ],
-        "how_i_work": [
-            "I build tools that scale my own analysis workflow and make EDA accessible to non-technical collaborators.",
-            "I think in terms of products (UX, error handling, documentation, deployment), not just one-off notebooks.",
-        ],
-        "links": {
-            "GitHub": "https://github.com/Cnair02/EDA",
-            "Live App": "",
-        },
-    },
+    
     {
         "id": "cfpb_eda",
         "title": "AI-enabled Consumer Finance Complaints Dashboard",
