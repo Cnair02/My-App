@@ -686,26 +686,26 @@ I’m deliberate about avoiding common analytical traps (confounding, reverse ca
         """.strip()
     )
 
-    with about_tab:
+with about_tab:
     # ... your existing about content ...
 
-        st.subheader("Recommendations")
-    
-        # 2 columns of cards
-        cols = st.columns(2, gap="large")
-        for i, rec in enumerate(RECOMMENDATIONS):
-            col = cols[i % 2]
-            with col:
-                st.markdown(
-                    f"""
-                    <div class="rec-card">
-                        <p class="rec-text">“{rec['text']}”</p>
-                        <p class="rec-name">{rec['name']}</p>
-                        <p class="rec-title">{rec['title']}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
-                )
+    st.subheader("Recommendations")
+
+    # 2 columns of cards
+    cols = st.columns(2, gap="large")
+    for i, rec in enumerate(RECOMMENDATIONS):
+        col = cols[i % 2]
+        with col:
+            st.markdown(
+                f"""
+                <div class="rec-card">
+                    <p class="rec-text">“{rec['text']}”</p>
+                    <p class="rec-name">{rec['name']}</p>
+                    <p class="rec-title">{rec['title']}</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
 
 def render_contact():
