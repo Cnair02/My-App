@@ -65,7 +65,7 @@ body {
 .stTabs [data-baseweb="tab"] {
     background-color: #e5e7eb;
     border-radius: 999px;
-    padding: 0.25rem 1.1rem;
+    padding: 0.4rem 1.4rem; 
     color: #374151;
     font-weight: 500;
     border: 1px solid transparent;
@@ -74,10 +74,17 @@ body {
     background-color: #f97373 !important;
     color: #f9fafb !important;
     border-color: #fb7185 !important;
-    font-size: 1.25rem; /* Increases size relative to root */
-    font-weight: bold;
+    
 }
 
+/* Tab label text (all tabs) */
+.stTabs [data-baseweb="tab"] p {
+    margin: 0;
+    font-weight: 600;            /* bold-ish */
+    font-size: 1.05rem;          /* bigger than default */
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    color: #374151;
+}
 
 /* Headings & text */
 h1, h2, h3, h4 {
