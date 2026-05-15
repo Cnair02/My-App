@@ -278,7 +278,7 @@ GitHub repo: https://github.com/Cnair02/EDA
     },
     {
         "id": "cfpb_eda",
-        "title": "Consumer Finance Complaints EDA",
+        "title": "AI-enabled Consumer Finance Complaints Dashboard",
         "tagline": "Analyzed 165K+ complaints to uncover deteriorating outcomes and company-level performance gaps using AI-assisted EDA.",
         "tools": ["Python", "Tableau", "AI Coding Assistant"],
         "tags": ["Risk Analytics", "Regulatory", "AI-assisted EDA"],
@@ -454,7 +454,7 @@ def render_cover_banner_text():
     """Mini intro strip under the cover image (like LinkedIn headline)."""
     st.markdown(
         """
-**Data & Analytics Engineer** · Data analytics, BI dashboards, ETL, and Data Cleaning  
+**Data & Analytics Engineer** : Data analytics, BI dashboards, ETL, and Data Cleaning.  
 Based in Canada, working end-to-end from pipelines and modeling to storytelling and stakeholder-facing dashboards.
         """.strip()
     )
@@ -630,9 +630,9 @@ I’m open to roles in Canada and remote opportunities.
 
     st.markdown("### Links")
     # TODO: replace with real links
-    st.markdown("- LinkedIn: [Your LinkedIn URL]( www.linkedin.com/in/chitra-murali-nair)")
-    st.markdown("- GitHub: [Your GitHub profile](https://github.com/Cnair02)")
-    st.markdown("- Tableau / BI Gallery: [Your Tableau or Power BI link](https://public.tableau.com/)")
+    st.markdown("- LinkedIn: [LinkedIn_Profile](www.linkedin.com/in/chitra-murali-nair)")
+    st.markdown("- GitHub: [Github_Profile](https://github.com/Cnair02)")
+    st.markdown("- Tableau / BI Gallery: [Tableau_Profile](https://public.tableau.com/)")
 
 
 # -----------------------
