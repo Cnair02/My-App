@@ -411,18 +411,27 @@ def project_select_widget():
     return options[selected_title]
 
 
+
+
 def render_project_card(project: dict):
+    # Safety check: show debug if project is missing
+    if not project:
+        st.warning("No project selected.")
+        return
+
     st.markdown('<div class="project-card">', unsafe_allow_html=True)
     st.markdown(f"### {project['title']}")
     st.markdown(project["tagline"])
     st.markdown(f"**Snapshot:** {project['snapshot']}")
     st.write("")
     st.caption("Tools: " + ", ".join(project["tools"]))
+
     if project.get("tags"):
         tag_html = " ".join(
             f'<span class="tag-pill">{t}</span>' for t in project["tags"]
         )
         st.markdown(tag_html, unsafe_allow_html=True)
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -463,18 +472,24 @@ def render_projects():
     st.markdown(
         """
 Use the selector below to explore individual projects.  
-For each one, I highlight the context, data, methods, and the measurable impact (or, for IMDB, how the cleaned dataset enables better analysis).
+For each one, I highlight the context, data, methods, and the measurable impact.
         """.strip()
     )
 
     st.markdown("### Project gallery")
+
+    # SELECT ONE PROJECT
     selected_project = project_select_widget()
-    st.write("")
-    render_project_card(selected_project)
+
+    # Optional debug – uncomment once to confirm you get a dict
+    # st.write("DEBUG selected_project:", selected_project)
+
+    st.write("")  # spacing
+    render_project_card(selected_project)  # Renders a single, non-blank card
 
     st.markdown("### Project details")
 
-    # Single dashboard screenshot per project (no extra View widgets)
+    # Single screenshot per project
     screenshots = selected_project.get("screenshots", {})
     img_path = screenshots.get("Dashboard")
     if img_path:
