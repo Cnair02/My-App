@@ -35,12 +35,12 @@ st.markdown(
     """
     <style>
     .rec-card {
-        background-color: var(--st-secondary-background-color);
-        border: 1px solid var(--st-border-color);
+        background-color: #fef2f2;                 /* light red background */
+        border: 2px solid #f97373;                 /* red border */
         border-radius: 0.75rem;
         padding: 1rem 1.25rem;
         margin-bottom: 1rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        box-shadow: 0 6px 16px rgba(248,113,113,0.2);
     }
     .rec-text {
         font-style: italic;
