@@ -177,7 +177,7 @@ I treated this as a small internal product that could speed up exploratory work 
         "data_tools": """
 Dataset-agnostic Streamlit app with a default e-commerce dataset and support for any user-uploaded CSV.
 Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent Development Kit (ADK).
-GitHub repo: https://github.com/Cnair02/EDA
+GitHub repo: [View Here](https://github.com/Cnair02/EDA)
         """.strip(),
         "analysis_steps": [
             "Implemented core EDA capabilities: schema and shape overview, sample preview, summary statistics, and column-level profiling.",
@@ -571,14 +571,13 @@ For each one, I will highlight the context, data, methods, and the measurable im
         st.markdown(f"- {item}")
 
     if selected_project.get("links"):
-        any_link = any(selected_project["links"].values())
-        if any_link:
-            st.markdown("#### Links & artifacts")
-            for label, url in selected_project["links"].items():
-                if url:
-                    # st.markdown(f"- [{label}]({url})")
-                    st.markdown(f"- {label}: [View here]({url})")
-                    st.markdown("[Test link](https://www.google.com)")
+    any_link = any(selected_project["links"].values())
+    if any_link:
+        st.markdown("#### Links & artifacts")
+        for label, url in selected_project["links"].items():
+            if url:
+                # e.g. "GitHub: View here"
+                st.markdown(f"- {label}: [View here]({url})")
 
 
 def render_about():
