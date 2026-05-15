@@ -67,13 +67,15 @@ body {
     border-radius: 999px;
     padding: 0.25rem 1.1rem;
     color: #374151;
-    font-weight: 800;
+    font-weight: 500;
     border: 1px solid transparent;
 }
 .stTabs [aria-selected="true"] {
     background-color: #f97373 !important;
     color: #f9fafb !important;
     border-color: #fb7185 !important;
+    font-size: 1.25rem; /* Increases size relative to root */
+    font-weight: bold;
 }
 
 
