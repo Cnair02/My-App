@@ -369,7 +369,7 @@ def render_cover_banner():
     st.markdown(
         """
         <div class="cover-banner">
-            <div class="cover-title">Data Analyst & Analytics Engineer</div>
+            <div class="cover-title">Data & Analytics Engineer</div>
             <div class="cover-subtitle">
                 Turning marketing, product, and customer data into clear decisions — with solid data engineering under the hood.
             </div>
@@ -454,7 +454,7 @@ def render_cover_banner_text():
     """Mini intro strip under the cover image (like LinkedIn headline)."""
     st.markdown(
         """
-**Data Analyst & Analytics Engineer** · Marketing analytics, BI dashboards, and data cleaning  
+**Data & Analytics Engineer** · Data analytics, BI dashboards, ETL, and Data Cleaning  
 Based in Canada, working end-to-end from pipelines and modeling to storytelling and stakeholder-facing dashboards.
         """.strip()
     )
@@ -483,8 +483,8 @@ def render_home():
     render_cover_banner_text()
 
     page_header(
-        "Data & Analytics Portfolio",
-        "Data Analyst / Analytics Engineer (ex-Data Engineer)",
+        "Portfolio",
+        "Ex-Data Engineer",
     )
 
 
@@ -515,12 +515,12 @@ This portfolio highlights work where I:
 def render_projects():
     page_header(
         "Projects",
-        "Selected work in marketing analytics, BI, data cleaning, and AI-assisted EDA.",
+        "Selected work in analytics, BI, data cleaning, and AI-assisted EDA.",
     )
     st.markdown(
         """
 Use the selector below to explore individual projects.  
-For each one, I highlight the context, data, methods, and the measurable impact.
+For each one, I will highlight the context, data, methods, and the measurable impact.
         """.strip()
     )
 
@@ -611,8 +611,8 @@ I’m deliberate about avoiding common analytical traps (confounding, reverse ca
 - SQL, Python (Pandas, NumPy, visualization)  
 - Tableau, Power BI, Streamlit  
 - Data modeling, ETL, cloud data platforms  
-- Marketing analytics (ROAS, CAC, funnels, seasonality)  
-- Data cleaning and preprocessing (IMDB-style datasets)  
+- Data analytics
+- Data cleaning and preprocessing
 - AI/LLM tooling and agent-based analytics workflows
         """.strip()
     )
@@ -622,7 +622,7 @@ def render_contact():
     page_header("Contact & Links", "How to reach me and explore more work.")
     st.markdown(
         """
-If you’d like to talk about data/marketing analytics, BI, data engineering, or analytics engineering roles, I’d be happy to connect.  
+If you’d like to talk about data analytics, BI, data engineering, or analytics engineering roles, I’d be happy to connect.  
 I’m especially interested in roles where I can combine hands-on analysis with close collaboration with marketing or product teams, and keep learning from real-world experiments.  
 I’m open to roles in Canada and remote opportunities.
         """.strip()
@@ -630,10 +630,9 @@ I’m open to roles in Canada and remote opportunities.
 
     st.markdown("### Links")
     # TODO: replace with real links
-    st.markdown("- LinkedIn: [Your LinkedIn URL](https://www.linkedin.com/)")
+    st.markdown("- LinkedIn: [Your LinkedIn URL]( www.linkedin.com/in/chitra-murali-nair)")
     st.markdown("- GitHub: [Your GitHub profile](https://github.com/Cnair02)")
     st.markdown("- Tableau / BI Gallery: [Your Tableau or Power BI link](https://public.tableau.com/)")
-    st.markdown("- Email: your.email@example.com")
 
 
 # -----------------------
