@@ -35,8 +35,8 @@ st.markdown(
     """
     <style>
     .rec-card {
-        background-color: #fef2f2;                 /* light red background */
-        border: 2px solid #f97373;                 /* red border */
+        background-color: var(--st-secondary-background-color);  /* works in light & dark */
+        border: 2px solid #f97373;
         border-radius: 0.75rem;
         padding: 1rem 1.25rem;
         margin-bottom: 1rem;
@@ -45,14 +45,17 @@ st.markdown(
     .rec-text {
         font-style: italic;
         margin-bottom: 0.5rem;
+        color: var(--st-text-color);             /* use theme text color */
+        opacity: 0.95;                           /* keep it readable */
     }
     .rec-name {
         font-weight: 600;
         margin-bottom: 0;
+        color: var(--st-text-color);             /* explicit */
     }
     .rec-title {
         font-size: 0.9rem;
-        color: var(--st-text-color);
+        color: var(--st-text-color);             /* explicit */
         opacity: 0.8;
         margin-bottom: 0;
     }
