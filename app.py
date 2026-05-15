@@ -37,26 +37,33 @@ st.markdown(
     .rec-card {
         padding: 0.8rem 0.9rem;
         border-radius: 0.75rem;
-        background: #fef2f2;                     /* same as snapshot */
-        border: 2px solid #f97373;               /* same red border */
+        background: #fef2f2;                     /* snapshot-style background */
+        border: 2px solid #f97373;               /* red border */
         box-shadow: 0 6px 16px rgba(248,113,113,0.2);
         height: 100%;
     }
+
+    /* Make ALL text inside the card use theme text color */
+    .rec-card p {
+        color: var(--st-text-color);             /* works in light & dark */
+        margin-top: 0;
+        margin-bottom: 0.35rem;
+    }
+
     .rec-text {
         font-style: italic;
         margin-bottom: 0.5rem;
-        color: var(--st-text-color);             /* theme-aware text */
-        opacity: 0.95;
+        opacity: 0.95;                           /* still very readable */
     }
+
     .rec-name {
         font-weight: 600;
         margin-bottom: 0;
-        color: var(--st-text-color);
     }
+
     .rec-title {
         font-size: 0.9rem;
-        color: var(--st-text-color);
-        opacity: 0.8;
+        opacity: 0.85;
         margin-bottom: 0;
     }
     </style>
