@@ -571,10 +571,10 @@ For each one, I will highlight the context, data, methods, and the measurable im
         st.markdown(f"- {item}")
 
     if selected_project.get("links"):
-    any_link = any(selected_project["links"].values())
-    if any_link:
-        st.markdown("#### Links & artifacts")
-        for label, url in selected_project["links"].items():
+        any_link = any(selected_project["links"].values())
+        if any_link:
+            st.markdown("#### Links & artifacts")
+            for label, url in selected_project["links"].items():
             if url:
                 # e.g. "GitHub: View here"
                 st.markdown(f"- {label}: [View here]({url})")
