@@ -415,7 +415,7 @@ def project_select_widget():
 
 def render_project_card(project: dict):
     # Open the card div once
-    # st.markdown('<div class="project-card">', unsafe_allow_html=True)
+    st.markdown('<div class="project-card">', unsafe_allow_html=True)
 
     # All content stays INSIDE the card
     st.markdown(f"### {project['title']}")
