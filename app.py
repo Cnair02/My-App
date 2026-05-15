@@ -144,8 +144,6 @@ section[data-testid="stVerticalBlock"] h3 {
 </style>
 """
 
-st.markdown(CUSTOM_CSS, unsafe_allow_html=True)  # <-- add this
-
 
 
 # -----------------------
