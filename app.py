@@ -177,7 +177,6 @@ I treated this as a small internal product that could speed up exploratory work 
         "data_tools": """
 Dataset-agnostic Streamlit app with a default e-commerce dataset and support for any user-uploaded CSV.
 Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent Development Kit (ADK).
-GitHub repo: [View Here](https://github.com/Cnair02/EDA)
         """.strip(),
         "analysis_steps": [
             "Implemented core EDA capabilities: schema and shape overview, sample preview, summary statistics, and column-level profiling.",
@@ -216,7 +215,6 @@ I focused on turning raw performance logs into clear guidance on which platforms
         "data_tools": """
 30K+ rows of ad spend and performance data across 5 channels and 4 countries, including spend, impressions, clicks, conversions, and revenue.
 Python (Pandas, Matplotlib, Seaborn) for EDA and Tableau to build interactive ROAS and KPI dashboards.
-GitHub repo: [View Here](https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis)
         """.strip(),
         "analysis_steps": [
             "Standardized spend and revenue fields and engineered ROAS, CPC, CTR, and CVR metrics by channel and country.",
@@ -256,7 +254,6 @@ I approached this as a category management and pricing question, not just a gene
         "data_tools": """
 4 years of sales, discount, and profit data across regions, segments, and product sub-categories, totaling $2.2M revenue and $286K profit.
 Python (Pandas) for data preparation and analysis, and Tableau for interactive sales and profit dashboards.
-GitHub repo: [View Here](https://github.com/Cnair02/Sales-vs-Profit-Analysis)
         """.strip(),
         "analysis_steps": [
             "Aggregated transaction-level data by category, sub-category, region, and segment, computing discount rates, margins, and profit ratios.",
@@ -295,7 +292,6 @@ I treated this as both a substantive analysis and a testbed for a disciplined, A
         "data_tools": """
 165,242 complaints and 19 fields covering product, company, geography, and resolution outcomes.
 Python and an AI coding assistant used as a pair-programmer for hypothesis generation, code review, and edge-case detection.
-GitHub repo: [View Here](https://github.com/Cnair02/CFPB-Complaint-Analysis)
         """.strip(),
         "analysis_steps": [
             "Defined eight business-relevant questions and created an EDA checklist with guardrails against reverse causality, sample-size artifacts, and product-mix confounding.",
@@ -332,7 +328,6 @@ The objective was to demonstrate practical data engineering and cleaning skills:
         "data_tools": """
 Raw IMDB-style movie data across multiple CSVs with inconsistent types, missing values, and noisy fields.
 Python, Pandas, and PySpark DataFrames used to profile, clean, and standardize the dataset.
-GitHub repo: [View Here](https://github.com/Cnair02/IMDB-DataProcessing)
         """.strip(),
         "analysis_steps": [
             "Loaded multiple raw IMDB datasets into PySpark DataFrames and inspected schema, null patterns, and basic distributions.",
