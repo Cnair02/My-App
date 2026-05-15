@@ -18,6 +18,40 @@ st.set_page_config(
 # -----------------------
 CUSTOM_CSS = """
 <style>
+
+/* Project card with red border */
+.project-card {
+    padding: 1.0rem 1.2rem;
+    border-radius: 0.9rem;
+    background: #f9fafb;
+    border: 2px solid #fecaca;                /* red-ish border */
+    box-shadow: 0 8px 20px rgba(248, 113, 113, 0.18);
+}
+
+/* Snapshot widgets with red border */
+.snapshot-widget {
+    padding: 0.8rem 0.9rem;
+    border-radius: 0.75rem;
+    background: #fef2f2;
+    border: 2px solid #fecaca;                /* red border */
+    box-shadow: 0 6px 16px rgba(248, 113, 113, 0.2);
+    height: 100%;
+}
+
+/* Tag pill with subtle red outline */
+.tag-pill {
+    display: inline-block;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    background-color: #fee2e2;
+    color: #374151;
+    font-size: 0.8rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.15rem;
+    border: 1px solid #fecaca;
+}
+
+
 /* Let Streamlit handle base theme */
 body {
     background-color: transparent;
@@ -393,7 +427,7 @@ def project_select_widget():
 
 def render_project_card(project: dict):
     # Open the card div once
-    # st.markdown('<div class="project-card">', unsafe_allow_html=True)
+    st.markdown('<div class="project-card">', unsafe_allow_html=True)
 
     # All content stays INSIDE the card
     st.markdown(f"### {project['title']}")
@@ -431,8 +465,13 @@ Based in Canada, working end-to-end from pipelines and modeling to storytelling 
 
 def render_home():
     # LinkedIn-style cover image
-    st.markdown('<div class="cover-image-container" style="max-height:150px; overflow:hidden;" >', unsafe_allow_html=True)
-    st.image("images/cover_banner.png", use_column_width=True)
+    st.markdown(
+        """
+        <div style="max-height:220px; overflow:hidden; border-radius:1.2rem; border:2px solid #f97373; box-shadow:0 16px 40px rgba(248,113,113,0.28); margin-bottom:1rem;">
+        """,
+        unsafe_allow_html=True,
+    )
+    st.image("images/cover_red_data.png", use_column_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     render_cover_banner_text()
@@ -441,6 +480,7 @@ def render_home():
         "Data & Analytics Portfolio",
         "Data Analyst / Analytics Engineer (ex-Data Engineer)",
     )
+
 
     st.markdown(
         """
