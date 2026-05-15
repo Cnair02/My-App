@@ -155,7 +155,7 @@ h1, h2, h3, h4 {
     color: #111827;
 }
 p {
-    color: #374151;
+    color: var(--st-text-color); 
 }
 
 /* Project card with red border */
