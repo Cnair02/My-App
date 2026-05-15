@@ -18,8 +18,9 @@ st.set_page_config(
 # -----------------------
 CUSTOM_CSS = """
 <style>
+/* Let Streamlit handle base theme */
 body {
-    background-color: transparent;  /* let Streamlit theme handle base */
+    background-color: transparent;
 }
 
 .block-container {
@@ -27,18 +28,18 @@ body {
     padding-bottom: 1.5rem;
 }
 
-/* Main content: subtle neutral gradient that works in both themes */
+/* Main content neutral background */
 .main {
     background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 40%, #f9fafb 100%);
 }
 
-/* Cover image wrapper */
+/* Cover image wrapper with red border */
 .cover-image-container {
     border-radius: 1.2rem;
     overflow: hidden;
     margin-bottom: 1.0rem;
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.28);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 16px 40px rgba(248, 113, 113, 0.28);
+    border: 2px solid #f97373;         /* red accent border */
 }
 
 /* Tabs */
@@ -59,9 +60,9 @@ body {
     border: 1px solid transparent;
 }
 .stTabs [aria-selected="true"] {
-    background-color: #2563eb !important;
+    background-color: #f97373 !important;
     color: #f9fafb !important;
-    border-color: #2563eb !important;
+    border-color: #fb7185 !important;
 }
 
 /* Headings & text */
@@ -72,22 +73,22 @@ p {
     color: #374151;
 }
 
-/* Project card */
+/* Project card with red border */
 .project-card {
     padding: 1.0rem 1.2rem;
     border-radius: 0.9rem;
     background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    border: 2px solid #fecaca;        /* subtle red border */
+    box-shadow: 0 8px 20px rgba(248, 113, 113, 0.18);
 }
 
-/* Snapshot widgets */
+/* Snapshot widgets with red border */
 .snapshot-widget {
     padding: 0.8rem 0.9rem;
     border-radius: 0.75rem;
-    background: #e5e7eb;
-    border: 1px solid #d1d5db;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+    background: #fef2f2;
+    border: 2px solid #fecaca;        /* red border */
+    box-shadow: 0 6px 16px rgba(248, 113, 113, 0.2);
     height: 100%;
 }
 .snapshot-title {
@@ -97,7 +98,7 @@ p {
 }
 .snapshot-metric {
     font-size: 0.9rem;
-    color: #2563eb;
+    color: #b91c1c;
 }
 
 /* Tag pill */
@@ -105,21 +106,28 @@ p {
     display: inline-block;
     padding: 0.12rem 0.5rem;
     border-radius: 999px;
-    background-color: #e5e7eb;
+    background-color: #fee2e2;
     color: #374151;
     font-size: 0.8rem;
     margin-right: 0.25rem;
     margin-bottom: 0.15rem;
+    border: 1px solid #fecaca;        /* subtle red outline */
 }
 
-/* Selectbox in neutral theme */
+/* Selectbox in neutral + red accent */
 .stSelectbox > div > div {
     border-radius: 999px !important;
-    border: 1px solid #d1d5db !important;
+    border: 1px solid #fecaca !important;
     background-color: #f9fafb !important;
 }
 .stSelectbox > div > div > div {
     color: #374151 !important;
+}
+
+/* Optional: red accent under section headers in Projects tab */
+section[data-testid="stVerticalBlock"] h3 {
+    border-bottom: 1px solid rgba(248, 113, 113, 0.35);
+    padding-bottom: 0.15rem;
 }
 </style>
 """
