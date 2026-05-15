@@ -168,7 +168,7 @@ PROJECTS = [
         "tags": ["Marketing Analytics", "E-commerce", "BI Dashboard"],
         "snapshot": "30K+ rows • 5 channels • 4 countries • +34% ROAS",
         "screenshots": {
-            "Dashboard": "images/marketing_dashboard.png",  # TODO: update or leave empty
+            "Dashboard": "images/retail_dashboard.png",  # TODO: update or leave empty
         },
         "context_objective": """
 A 3-year, 30K-row e-commerce marketing dataset was underperforming on overall ROAS, and the team needed to understand where ad dollars were being wasted.
@@ -208,7 +208,7 @@ GitHub repo: https://github.com/Cnair02/Marketing-ROI-and-Budget-Analysis
         "tags": ["BI Dashboard", "Retail Analytics", "Profitability"],
         "snapshot": "$2.2M revenue • $286K profit • 17.7K loss in Tables",
         "screenshots": {
-            "Dashboard": "images/retail_dashboard.png",
+            "Dashboard": "images/sales_dashboard.png",
         },
         "context_objective": """
 Standard revenue reports were hiding important profitability issues across product categories in a retail dataset.
