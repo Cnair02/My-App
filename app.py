@@ -193,7 +193,7 @@ Built with Python, Pandas, Streamlit, Seaborn, and Google Gemini via the Agent D
             "I think in terms of products (UX, error handling, documentation, deployment), not just one-off notebooks.",
         ],
         "links": {
-            "GitHub": "https://github.com/Cnair02/EDA",
+            "GitHub": "https://github.com/Cnair02/AI-Augmented-EDA-workflow",
             "Live App": "", 
         },
     },
