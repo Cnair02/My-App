@@ -455,7 +455,7 @@ def render_home():
     st.markdown(
         """
         <div style="
-            max-height: 120px;
+            max-height: 80px;
             overflow: hidden;
             border-radius: 1.2rem;
             border: 2px solid #f97373;
