@@ -35,27 +35,27 @@ st.markdown(
     """
     <style>
     .rec-card {
-        background-color: var(--st-secondary-background-color);  /* works in light & dark */
-        border: 2px solid #f97373;
+        padding: 0.8rem 0.9rem;
         border-radius: 0.75rem;
-        padding: 1rem 1.25rem;
-        margin-bottom: 1rem;
+        background: #fef2f2;                     /* same as snapshot */
+        border: 2px solid #f97373;               /* same red border */
         box-shadow: 0 6px 16px rgba(248,113,113,0.2);
+        height: 100%;
     }
     .rec-text {
         font-style: italic;
         margin-bottom: 0.5rem;
-        color: var(--st-text-color);             /* use theme text color */
-        opacity: 0.95;                           /* keep it readable */
+        color: var(--st-text-color);             /* theme-aware text */
+        opacity: 0.95;
     }
     .rec-name {
         font-weight: 600;
         margin-bottom: 0;
-        color: var(--st-text-color);             /* explicit */
+        color: var(--st-text-color);
     }
     .rec-title {
         font-size: 0.9rem;
-        color: var(--st-text-color);             /* explicit */
+        color: var(--st-text-color);
         opacity: 0.8;
         margin-bottom: 0;
     }
