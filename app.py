@@ -12,9 +12,9 @@ st.markdown(
     """
     <style>
     .name-title {
-        font-size: 108px;
-        font-weight: 1000;
-        margin-bottom: 0.5rem;
+        font-size: 108px;!important;
+        font-weight: 1000;!important;
+        margin-bottom: 0.5rem;!important;
     }
     </style>
     """,
