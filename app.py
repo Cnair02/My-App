@@ -7,6 +7,11 @@ import streamlit as st
 # -----------------------
 # Basic page configuration
 # -----------------------
+st.set_page_config(
+    page_title="Data & Analytics Portfolio",
+    page_icon="📊",
+    layout="wide",
+)
 
 st.markdown(
     """
@@ -24,11 +29,7 @@ st.markdown(
 )
 
 st.markdown('<span class="name-title">CHITRA MURALI NAIR</span>', unsafe_allow_html=True)
-st.set_page_config(
-    page_title="Data & Analytics Portfolio",
-    page_icon="📊",
-    layout="wide",
-)
+
 
 st.markdown(
     """
@@ -685,27 +686,27 @@ I’m deliberate about avoiding common analytical traps (confounding, reverse ca
 - AI/LLM tooling and agent-based analytics workflows
         """.strip()
     )
+    st.subheader("Recommendations")
 
-    with about_tab:
+    cols = st.columns(2, gap="large")
+    for i, rec in enumerate(RECOMMENDATIONS):
+        col = cols[i % 2]
+        with col:
+            st.markdown(
+                f"""
+                <div class="rec-card">
+                    <p class="rec-text">“{rec['text']}”</p>
+                    <p class="rec-name">{rec['name']}</p>
+                    <p class="rec-title">{rec['title']}</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
         # ... your existing about content ...
+
     
-        st.subheader("Recommendations")
-    
-        # 2 columns of cards
-        cols = st.columns(2, gap="large")
-        for i, rec in enumerate(RECOMMENDATIONS):
-            col = cols[i % 2]
-            with col:
-                st.markdown(
-                    f"""
-                    <div class="rec-card">
-                        <p class="rec-text">“{rec['text']}”</p>
-                        <p class="rec-name">{rec['name']}</p>
-                        <p class="rec-title">{rec['title']}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
-                )
+       
 
 
 def render_contact():
