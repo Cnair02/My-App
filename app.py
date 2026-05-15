@@ -414,12 +414,10 @@ def project_select_widget():
 
 
 def render_project_card(project: dict):
-    # Safety check: show debug if project is missing
-    if not project:
-        st.warning("No project selected.")
-        return
-
+    # Open the card div once
     st.markdown('<div class="project-card">', unsafe_allow_html=True)
+
+    # All content stays INSIDE the card
     st.markdown(f"### {project['title']}")
     st.markdown(project["tagline"])
     st.markdown(f"**Snapshot:** {project['snapshot']}")
@@ -432,6 +430,7 @@ def render_project_card(project: dict):
         )
         st.markdown(tag_html, unsafe_allow_html=True)
 
+    # Close the card div
     st.markdown("</div>", unsafe_allow_html=True)
 
 
