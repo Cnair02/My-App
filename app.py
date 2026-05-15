@@ -416,7 +416,7 @@ RECOMMENDATIONS = [
     {
         "text": "Chitra often steps out of her comfort zone to pick up issues troubling the team. She is able to independently deliver her projects with.....",
         "name": "Manager",
-    },
+    }
     # {
     #     "text": "Chaitanya is proactive, thoughtful, and always looking for ways to simplify complex data problems.",
     #     "name": "Another Recommender",
