@@ -18,6 +18,22 @@ st.set_page_config(
 # -----------------------
 CUSTOM_CSS = """
 <style>
+
+.cover-image-container {
+    border-radius: 1.2rem;
+    overflow: hidden;
+    margin-bottom: 1.0rem;
+    box-shadow: 0 16px 40px rgba(248, 113, 113, 0.28);
+    border: 1px solid #fecaca;
+}
+
+/* Optional: dim image slightly so text below pops */
+.cover-image-container img {
+    display: block;
+}
+
+
+
 /* Overall page background */
 body {
     background-color: #fef2f2;
@@ -437,30 +453,55 @@ def render_project_card(project: dict):
 # -----------------------
 # Pages
 # -----------------------
+
+
+def render_cover_banner_text():
+    """Mini intro strip under the cover image (like LinkedIn headline)."""
+    st.markdown(
+        """
+**Data Analyst & Analytics Engineer** · Marketing analytics, BI dashboards, and data cleaning  
+Based in Canada, working end-to-end from pipelines and modeling to storytelling and stakeholder-facing dashboards.
+        """.strip()
+    )
+
+
+
+
 def render_home():
-    render_cover_banner()
+    # LinkedIn-style cover image
+    st.markdown('<div class="cover-image-container">', unsafe_allow_html=True)
+    st.image("images/cover_banner.png", use_column_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    render_cover_banner_text()
+
     page_header(
         "Data & Analytics Portfolio",
         "Data Analyst / Analytics Engineer (ex-Data Engineer)",
     )
+
     st.markdown(
         """
 I help teams turn messy data into clear, business-ready insights using SQL, Python, and modern BI tools.  
-Over the last few years I’ve moved from building production data pipelines in banking to using that foundation to answer business questions for marketing, product, and operations teams.  
-I enjoy taking ambiguous questions like “Which campaigns should we cut?” or “Which customers are at risk?” and turning them into structured analysis, dashboards, and concrete recommendations.
+I started in data engineering, building and maintaining production pipelines in banking, and now apply that foundation to marketing, product, and customer analytics.  
+I enjoy taking ambiguous questions like “Which campaigns should we cut?” or “Where are we leaking profit?” and turning them into structured analysis, dashboards, and decisions.
         """.strip()
     )
+
     st.markdown(
         """
-This portfolio focuses on a handful of projects that represent how I work day to day:  
-- Optimizing multi-channel marketing budgets and improving ROAS.  
-- Finding hidden margin issues in retail sales data.  
-- Building reusable EDA tools with LLMs and Streamlit.  
-- Cleaning messy IMDB-style movie data into a reliable asset.  
-- Investigating large regulatory datasets and turning them into clear, executive-ready narratives.
+This portfolio highlights work where I:  
+- Optimized multi-channel marketing budgets and improved ROAS.  
+- Found hidden margin issues in retail sales data.  
+- Built reusable EDA tools with LLMs and Streamlit.  
+- Cleaned messy IMDB-style movie data into a reliable asset.  
+- Investigated large regulatory datasets and condensed them into executive-ready narratives.
         """.strip()
     )
+
     project_snapshot_row()
+
+
 
 
 def render_projects():
