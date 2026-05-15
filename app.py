@@ -17,6 +17,8 @@ st.set_page_config(
 # Custom CSS for styling
 # -----------------------
 CUSTOM_CSS = """
+st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+
 <style>
 
 
