@@ -35,35 +35,28 @@ st.markdown(
     """
     <style>
     .rec-card {
-        padding: 0.8rem 0.9rem;
+        background-color: var(--st-secondary-background-color);  /* works in light & dark */
+        border: 2px solid #f97373;
         border-radius: 0.75rem;
-        background: #fef2f2;                     /* snapshot-style background */
-        border: 2px solid #f97373;               /* red border */
+        padding: 1rem 1.25rem;
+        margin-bottom: 1rem;
         box-shadow: 0 6px 16px rgba(248,113,113,0.2);
-        height: 100%;
     }
-
-    /* Make ALL text inside the card use theme text color */
-    .rec-card p {
-        color: var(--st-text-color);             /* works in light & dark */
-        margin-top: 0;
-        margin-bottom: 0.35rem;
-    }
-
     .rec-text {
         font-style: italic;
         margin-bottom: 0.5rem;
-        opacity: 0.95;                           /* still very readable */
+        color: var(--st-text-color);             /* use theme text color */
+        opacity: 0.95;                           /* keep it readable */
     }
-
     .rec-name {
         font-weight: 600;
         margin-bottom: 0;
+        color: var(--st-text-color);             /* explicit */
     }
-
     .rec-title {
         font-size: 0.9rem;
-        opacity: 0.85;
+        color: var(--st-text-color);             /* explicit */
+        opacity: 0.8;
         margin-bottom: 0;
     }
     </style>
