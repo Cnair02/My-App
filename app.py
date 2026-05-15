@@ -7,6 +7,22 @@ import streamlit as st
 # -----------------------
 # Basic page configuration
 # -----------------------
+
+st.markdown(
+    """
+    <style>
+    .name-title {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown('<p class="name-title">Chaitanya Nair</p>', unsafe_allow_html=True)
+
 st.set_page_config(
     page_title="Data & Analytics Portfolio",
     page_icon="📊",
