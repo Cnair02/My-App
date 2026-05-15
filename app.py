@@ -51,6 +51,7 @@ body {
     height: auto;
 }
 
+
 /* Tabs */
 .stTabs {
     margin-top: 0.75rem;
@@ -60,19 +61,26 @@ body {
     padding-bottom: 0.4rem;
     border-bottom: 1px solid #e5e7eb;
 }
+
+/* Tab buttons: bigger, more creative font */
 .stTabs [data-baseweb="tab"] {
     background-color: #e5e7eb;
     border-radius: 999px;
-    padding: 0.25rem 1.1rem;
+    padding: 0.4rem 1.4rem;              /* more padding for larger font */
     color: #374151;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1rem;                     /* increase label size */
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
     border: 1px solid transparent;
 }
+
+/* Active tab */
 .stTabs [aria-selected="true"] {
     background-color: #f97373 !important;
     color: #f9fafb !important;
     border-color: #fb7185 !important;
 }
+
 
 /* Headings & text */
 h1, h2, h3, h4 {
