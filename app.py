@@ -431,7 +431,7 @@ Based in Canada, working end-to-end from pipelines and modeling to storytelling 
 
 def render_home():
     # LinkedIn-style cover image
-    st.markdown('<div class="cover-image-container" style="max-height:260px; overflow:hidden; >', unsafe_allow_html=True)
+    st.markdown('<div class="cover-image-container" style="max-height:260px; overflow:hidden;" >', unsafe_allow_html=True)
     st.image("images/cover_banner.png", use_column_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
