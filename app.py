@@ -376,15 +376,27 @@ def render_cover_banner():
 
 def project_snapshot_row():
     st.markdown("### Project snapshots")
-    cols = st.columns(4)
-    # show the first 4 projects as snapshots (you can reorder PROJECTS to pick which)
+    cols = st.columns(4)  # or 5, depending on how many you want to show
     for idx, proj in enumerate(PROJECTS[:4]):
         with cols[idx]:
             st.markdown(
-                f'<div class="snapshot-widget">'
-                f'<div class="snapshot-title">{proj["title"]}</div>'
-                f'<div class="snapshot-metric">{proj["snapshot"]}</div>'
-                f"</div>",
+                f"""
+                <div style="
+                    padding: 0.8rem 0.9rem;
+                    border-radius: 0.75rem;
+                    background: #fef2f2;
+                    border: 2px solid #f97373;      /* clear red border */
+                    box-shadow: 0 6px 16px rgba(248,113,113,0.2);
+                    height: 100%;
+                ">
+                    <div style="font-weight:600;color:#111827;margin-bottom:0.2rem;">
+                        {proj["title"]}
+                    </div>
+                    <div style="font-size:0.9rem;color:#b91c1c;">
+                        {proj["snapshot"]}
+                    </div>
+                </div>
+                """,
                 unsafe_allow_html=True,
             )
 
@@ -440,7 +452,19 @@ Based in Canada, working end-to-end from pipelines and modeling to storytelling 
 
 def render_home():
     # LinkedIn-style cover image
-    st.markdown('<div class="cover-image-container">', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div style="
+            max-height: 120px;
+            overflow: hidden;
+            border-radius: 1.2rem;
+            border: 2px solid #f97373;
+            box-shadow: 0 16px 40px rgba(248,113,113,0.28);
+            margin-bottom: 1rem;
+        ">
+        """,
+        unsafe_allow_html=True,
+    )
     st.image("images/cover_banner.png", use_column_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
