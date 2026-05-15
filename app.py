@@ -406,20 +406,22 @@ Python, Pandas, and PySpark DataFrames used to profile, clean, and standardize t
 # Recommendations
 RECOMMENDATIONS = [
     {
-        "text": "Chaitanya consistently turned vague business questions into clear, data-driven stories that our stakeholders could act on.",
-        "name": "Manager Name",
-        "title": "Senior Manager, Analytics at Company",
+        "text": "Chitra is always eager to learn new technologies & is highly valuable team member. She is a fast learner and brings great energy.....",
+        "name": "Manager",
     },
     {
-        "text": "He built reliable data pipelines and dashboards that our marketing team actually used every week.",
-        "name": "Colleague Name",
-        "title": "Product Manager at Company",
+        "text": "Chitra consistently demonstrates an impressive ability to solve problems and manage data systems with efficiency & creativity. She played a pivotal role.....",
+        "name": "Colleague",
     },
     {
-        "text": "Chaitanya is proactive, thoughtful, and always looking for ways to simplify complex data problems.",
-        "name": "Another Recommender",
-        "title": "Director of Data at Company",
+        "text": "Chitra often steps out of her comfort zone to pick up issues troubling the team. She is able to independently deliver her projects with.....",
+        "name": "Manager",
     },
+    # {
+    #     "text": "Chaitanya is proactive, thoughtful, and always looking for ways to simplify complex data problems.",
+    #     "name": "Another Recommender",
+    #     "title": "Director of Data at Company",
+    # },
 ]
 
 
