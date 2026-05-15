@@ -575,9 +575,9 @@ For each one, I will highlight the context, data, methods, and the measurable im
         if any_link:
             st.markdown("#### Links & artifacts")
             for label, url in selected_project["links"].items():
-            if url:
+                if url:
                 # e.g. "GitHub: View here"
-                st.markdown(f"- {label}: [View here]({url})")
+                    st.markdown(f"- {label}: [View here]({url})")
 
 
 def render_about():
