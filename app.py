@@ -579,17 +579,17 @@ def render_about():
     page_header("About", "Who I am and how I work.")
     st.markdown(
         """
-I’m a data analyst and analytics engineer with a background in data engineering across financial services and technology.  
-Early in my career I focused on keeping data flowing reliably: building ETL pipelines, migrating workloads to the cloud, and maintaining thousands of feeds in a production banking environment.  
-That experience taught me how fragile data can be and why trustworthy pipelines matter for every analysis.
+I got my start building data pipelines at HSBC—not the flashy part of data, but the foundation. 
+Keeping 1,000+ feeds alive in a 24/7 banking environment taught me that data is only valuable if it's clean, fast, and trustworthy. 
+Skip any of those three and your best analysis falls apart.
         """.strip()
     )
 
     st.markdown(
         """
-Today I apply that foundation to analytics work: marketing ROI, product and customer behavior, BI reporting, and data quality.  
-I like being close to the decision—partnering with marketers, product managers, and operations leaders to understand their goals, translate them into metrics, and then build analyses and dashboards that move the needle.  
-I’m comfortable going from ad-hoc deep dives in Python to polished Tableau or Power BI views that non-technical stakeholders can own and update.
+Today I hunt for the stories hidden in messy data. I've found $17.7K of profit leakage in a retail dataset, uncovered why Meta ads cost 6× more than expected, 
+and surfaced margin traps that wouldn't show up in summary reports. 
+The pattern: I don't just analyze — I ask uncomfortable questions, stress-test assumptions, and make sure the insights stick.
         """.strip()
     )
 
