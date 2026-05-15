@@ -630,7 +630,7 @@ I’m open to roles in Canada and remote opportunities.
 
     st.markdown("### Links")
     # TODO: replace with real links
-    st.markdown("- LinkedIn: [Linked Profile](www.linkedin.com/in/chitra-murali-nair)")
+    st.markdown("- LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/chitra-murali-nair)")
     st.markdown("- GitHub: [Github Profile](https://github.com/Cnair02)")
     st.markdown("- Tableau Gallery: [Tableau Profile](https://public.tableau.com/app/profile/cn2654/vizzes)")
 
