@@ -132,7 +132,7 @@ body {
 .stTabs [data-baseweb="tab"] p {
     margin: 0;
     font-weight: 600;            /* bold-ish */
-    font-size: 1.05rem;          /* bigger than default */
+    font-size: 30px !important;         /* bigger than default */
     font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
     color: #374151;
 }
