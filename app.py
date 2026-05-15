@@ -43,7 +43,7 @@ body {
     margin-bottom: 1.0rem;
     box-shadow: 0 16px 40px rgba(248, 113, 113, 0.28);
     border: 2px solid #f97373;         /* red accent border */
-    max-height: 220px;                 /* <--- limit visible height */
+    max-height: 200px;                 /* <--- limit visible height */
 }
 .cover-image-container img {
     display: block;
@@ -96,7 +96,7 @@ p {
     padding: 0.8rem 0.9rem;
     border-radius: 0.75rem;
     background: #fef2f2;
-    border: 2px solid #fecaca;        /* red border */
+    border: 2px solid #f97373;        /* red border */
     box-shadow: 0 6px 16px rgba(248, 113, 113, 0.2);
     height: 100%;
 }
