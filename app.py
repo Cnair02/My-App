@@ -471,7 +471,7 @@ def render_home():
         """,
         unsafe_allow_html=True,
     )
-    st.image("images/cover_red_data.png", use_column_width=True)
+    st.image("images/cover_banner.png", use_column_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     render_cover_banner_text()
