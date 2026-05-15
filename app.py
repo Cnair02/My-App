@@ -30,6 +30,36 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    """
+    <style>
+    .rec-card {
+        background-color: var(--st-secondary-background-color);
+        border: 1px solid var(--st-border-color);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .rec-text {
+        font-style: italic;
+        margin-bottom: 0.5rem;
+    }
+    .rec-name {
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    .rec-title {
+        font-size: 0.9rem;
+        color: var(--st-text-color);
+        opacity: 0.8;
+        margin-bottom: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # -----------------------
 # Custom CSS for styling
 # -----------------------
@@ -105,35 +135,7 @@ body {
 
 
 
-st.markdown(
-    """
-    <style>
-    .rec-card {
-        background-color: var(--st-secondary-background-color);
-        border: 1px solid var(--st-border-color);
-        border-radius: 0.75rem;
-        padding: 1rem 1.25rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-    }
-    .rec-text {
-        font-style: italic;
-        margin-bottom: 0.5rem;
-    }
-    .rec-name {
-        font-weight: 600;
-        margin-bottom: 0;
-    }
-    .rec-title {
-        font-size: 0.9rem;
-        color: var(--st-text-color);
-        opacity: 0.8;
-        margin-bottom: 0;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+
 
 
 
