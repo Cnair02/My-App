@@ -18,159 +18,113 @@ st.set_page_config(
 # -----------------------
 CUSTOM_CSS = """
 <style>
-
-.cover-image-container {
-    border-radius: 1.2rem;
-    overflow: hidden;
-    margin-bottom: 1.0rem;
-    box-shadow: 0 16px 40px rgba(248, 113, 113, 0.28);
-    border: 1px solid #fecaca;
-}
-
-/* Optional: dim image slightly so text below pops */
-.cover-image-container img {
-    display: block;
-}
-
-
-
-/* Overall page background */
 body {
-    background-color: #fef2f2;
+    background-color: transparent;  /* let Streamlit theme handle base */
 }
 
-/* Main content container: top padding so tabs are fully visible */
 .block-container {
     padding-top: 3.2rem;
     padding-bottom: 1.5rem;
 }
 
-/* Main content gradient */
+/* Main content: subtle neutral gradient that works in both themes */
 .main {
-    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 45%, #ffffff 100%);
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 40%, #f9fafb 100%);
 }
 
-/* Cover banner */
-.cover-banner {
+/* Cover image wrapper */
+.cover-image-container {
     border-radius: 1.2rem;
-    padding: 1.2rem 1.4rem;
-    background: radial-gradient(circle at top left, #fecaca 0%, #fee2e2 40%, #ffffff 100%);
-    border: 1px solid #fecaca;
-    box-shadow: 0 16px 40px rgba(248, 113, 113, 0.22);
-    margin-bottom: 1.5rem;
-}
-.cover-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #7f1d1d;
-}
-.cover-subtitle {
-    font-size: 0.95rem;
-    color: #b91c1c;
-}
-.cover-tags {
-    margin-top: 0.5rem;
-}
-.cover-tag-pill {
-    display: inline-block;
-    padding: 0.15rem 0.6rem;
-    border-radius: 999px;
-    background: #fee2e2;
-    color: #7f1d1d;
-    font-size: 0.8rem;
-    margin-right: 0.25rem;
+    overflow: hidden;
+    margin-bottom: 1.0rem;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.28);
+    border: 1px solid #e5e7eb;
 }
 
-/* Tabs styling */
+/* Tabs */
 .stTabs {
     margin-top: 0.75rem;
 }
 .stTabs [data-baseweb="tab-list"] {
     gap: 0.6rem;
     padding-bottom: 0.4rem;
-    border-bottom: 1px solid #fecaca;
+    border-bottom: 1px solid #e5e7eb;
 }
 .stTabs [data-baseweb="tab"] {
-    background-color: #fee2e2;
+    background-color: #e5e7eb;
     border-radius: 999px;
     padding: 0.25rem 1.1rem;
-    color: #7f1d1d;
+    color: #374151;
     font-weight: 500;
     border: 1px solid transparent;
 }
 .stTabs [aria-selected="true"] {
-    background-color: #f97373 !important;
-    color: #fef2f2 !important;
-    border-color: #fb7185 !important;
+    background-color: #2563eb !important;
+    color: #f9fafb !important;
+    border-color: #2563eb !important;
 }
 
-/* Headings */
+/* Headings & text */
 h1, h2, h3, h4 {
-    color: #7f1d1d;
+    color: #111827;
 }
-
-/* Body text */
 p {
     color: #374151;
 }
 
-/* Project card styling */
+/* Project card */
 .project-card {
     padding: 1.0rem 1.2rem;
     border-radius: 0.9rem;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    box-shadow: 0 10px 25px rgba(248, 113, 113, 0.25);
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
 }
 
-/* Snapshot widgets: rectangular pop-out */
+/* Snapshot widgets */
 .snapshot-widget {
     padding: 0.8rem 0.9rem;
     border-radius: 0.75rem;
-    background: #fee2e2;
-    border: 1px solid #fecaca;
-    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.25);
+    background: #e5e7eb;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
     height: 100%;
 }
 .snapshot-title {
     font-weight: 600;
-    color: #7f1d1d;
+    color: #111827;
     margin-bottom: 0.2rem;
 }
 .snapshot-metric {
     font-size: 0.9rem;
-    color: #b91c1c;
+    color: #2563eb;
 }
 
-/* Tags pill */
+/* Tag pill */
 .tag-pill {
     display: inline-block;
     padding: 0.12rem 0.5rem;
     border-radius: 999px;
-    background-color: #fee2e2;
-    color: #7f1d1d;
+    background-color: #e5e7eb;
+    color: #374151;
     font-size: 0.8rem;
     margin-right: 0.25rem;
     margin-bottom: 0.15rem;
 }
 
-/* Screenshot image rounding */
-img {
-    border-radius: 0.6rem;
-}
-
-/* Selectbox (project gallery) styled in red theme */
+/* Selectbox in neutral theme */
 .stSelectbox > div > div {
     border-radius: 999px !important;
-    border: 1px solid #fecaca !important;
-    background-color: #fee2e2 !important;
+    border: 1px solid #d1d5db !important;
+    background-color: #f9fafb !important;
 }
 .stSelectbox > div > div > div {
-    color: #7f1d1d !important;
+    color: #374151 !important;
 }
 </style>
 """
-st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+
+
 
 # -----------------------
 # Project data (5 projects including IMDB)
