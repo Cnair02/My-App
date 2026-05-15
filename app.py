@@ -103,6 +103,40 @@ body {
     color: #374151;
 }
 
+
+
+st.markdown(
+    """
+    <style>
+    .rec-card {
+        background-color: var(--st-secondary-background-color);
+        border: 1px solid var(--st-border-color);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .rec-text {
+        font-style: italic;
+        margin-bottom: 0.5rem;
+    }
+    .rec-name {
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    .rec-title {
+        font-size: 0.9rem;
+        color: var(--st-text-color);
+        opacity: 0.8;
+        margin-bottom: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+
 /* Headings & text */
 h1, h2, h3, h4 {
     color: #111827;
@@ -363,6 +397,25 @@ Python, Pandas, and PySpark DataFrames used to profile, clean, and standardize t
             "GitHub": "https://github.com/Cnair02/IMDB-DataProcessing",
             "Dashboard": "",
         },
+    },
+]
+
+# Recommendations
+RECOMMENDATIONS = [
+    {
+        "text": "Chaitanya consistently turned vague business questions into clear, data-driven stories that our stakeholders could act on.",
+        "name": "Manager Name",
+        "title": "Senior Manager, Analytics at Company",
+    },
+    {
+        "text": "He built reliable data pipelines and dashboards that our marketing team actually used every week.",
+        "name": "Colleague Name",
+        "title": "Product Manager at Company",
+    },
+    {
+        "text": "Chaitanya is proactive, thoughtful, and always looking for ways to simplify complex data problems.",
+        "name": "Another Recommender",
+        "title": "Director of Data at Company",
     },
 ]
 
@@ -630,6 +683,27 @@ I’m deliberate about avoiding common analytical traps (confounding, reverse ca
 - AI/LLM tooling and agent-based analytics workflows
         """.strip()
     )
+
+    with about_tab:
+    # ... your existing about content ...
+
+    st.subheader("Recommendations")
+
+    # 2 columns of cards
+    cols = st.columns(2, gap="large")
+    for i, rec in enumerate(RECOMMENDATIONS):
+        col = cols[i % 2]
+        with col:
+            st.markdown(
+                f"""
+                <div class="rec-card">
+                    <p class="rec-text">“{rec['text']}”</p>
+                    <p class="rec-name">{rec['name']}</p>
+                    <p class="rec-title">{rec['title']}</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
 
 def render_contact():
