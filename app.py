@@ -417,11 +417,7 @@ RECOMMENDATIONS = [
         "text": "Chitra often steps out of her comfort zone to pick up issues troubling the team. She is able to independently deliver her projects with.....",
         "name": "Manager"
     },
-    {
-        "text": "Chaitanya is proactive, thoughtful, and always looking for ways to simplify complex data problems.",
-        "name": "Another Recommender",
-        "title": "Director of Data at Company",
-    },
+    
 ]
 
 
@@ -699,11 +695,29 @@ I’m deliberate about avoiding common analytical traps (confounding, reverse ca
                 <div class="rec-card">
                     <p class="rec-text">“{rec['text']}”</p>
                     <p class="rec-name">{rec['name']}</p>
-                    <p class="rec-title">{rec['title']}</p>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
+
+
+
+# st.subheader("Recommendations")
+
+#     cols = st.columns(2, gap="large")
+#     for i, rec in enumerate(RECOMMENDATIONS):
+#         col = cols[i % 2]
+#         with col:
+#             st.markdown(
+#                 f"""
+#                 <div class="rec-card">
+#                     <p class="rec-text">“{rec['text']}”</p>
+#                     <p class="rec-name">{rec['name']}</p>
+#                     # <p class="rec-title">{rec['title']}</p>
+#                 </div>
+#                 """,
+#                 unsafe_allow_html=True,
+#             )
 
         # ... your existing about content ...
 
