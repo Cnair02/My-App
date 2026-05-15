@@ -520,12 +520,24 @@ For each one, I highlight the context, data, methods, and the measurable impact.
 
     st.markdown("### Project details")
 
-    # Single screenshot per project
-    screenshots = selected_project.get("screenshots", {})
-    img_path = screenshots.get("Dashboard")
-    if img_path:
-        st.markdown("#### Screenshot")
-        st.image(img_path, use_column_width=True, caption="Dashboard")
+    # # Single screenshot per project
+    # screenshots = selected_project.get("screenshots", {})
+    # img_path = screenshots.get("Dashboard")
+    # if img_path:
+    #     st.markdown("#### Screenshot")
+    #     st.image(img_path, use_column_width=True, caption="Dashboard")
+
+     # For the AI EDA project: show a video instead of screenshot
+    if selected_project["id"] == "ai_eda_dashboard":
+        st.markdown("#### Demo video")
+        st.video("media/ai_eda_demo.mov")  # or .mp4 if you converted it
+    else:
+        # Default: screenshot for other projects
+        screenshots = selected_project.get("screenshots", {})
+        img_path = screenshots.get("Dashboard")
+        if img_path:
+            st.markdown("#### Screenshot")
+            st.image(img_path, use_column_width=True, caption="Dashboard")
 
     st.markdown("#### Context & objective")
     st.markdown(selected_project["context_objective"])
