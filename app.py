@@ -547,7 +547,7 @@ def render_home():
         """,
         unsafe_allow_html=True,
     )
-    st.image("images/cover_banner.svg", use_column_width=True)
+    st.image("images/cover_banner.svg", use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     render_cover_banner_text()
@@ -607,7 +607,7 @@ For each one, I will highlight the context, data, methods, and the measurable im
     # img_path = screenshots.get("Dashboard")
     # if img_path:
     #     st.markdown("#### Screenshot")
-    #     st.image(img_path, use_column_width=True, caption="Dashboard")
+    #     st.image(img_path, use_container_width=True, caption="Dashboard")
 
      # For the AI EDA project: show a video instead of screenshot
     if selected_project["id"] == "ai_eda_dashboard":
@@ -619,7 +619,7 @@ For each one, I will highlight the context, data, methods, and the measurable im
         img_path = screenshots.get("Dashboard")
         if img_path:
             st.markdown("#### Screenshot")
-            st.image(img_path, use_column_width=True, caption="Dashboard")
+            st.image(img_path, use_container_width=True, caption="Dashboard")
 
     st.markdown("#### Context & objective")
     st.markdown(selected_project["context_objective"])
